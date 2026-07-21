@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Claude / privado
+.claude/
+.env
+.env.local
+
+# Pesos no-tracked
+*.mov
+*.mp4
+*.MOV
+*.MP4
+*.zip
+*.tar.gz
+
+# Sistema
+Thumbs.db
+desktop.ini
