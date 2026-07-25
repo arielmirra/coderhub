@@ -1,10 +1,12 @@
 # Profile template
 
-Tu perfil personal. **Lo llena la skill `coderhub-setup` automáticamente** la primera vez que la corrés — vos solo le tirás la transcripción de tu call con el equipo de CoderHub, o tu CV + perfil de LinkedIn, y ella extrae todo.
+**Plantilla en blanco** del perfil. Este archivo NO se modifica — es la base reutilizable.
+
+Tu perfil real (con tus datos) vive en `my-profile/profile.md`, a nivel root del repo. Esa carpeta está gitignoreada, así que tus datos personales (teléfono, salario) nunca se commitean. La crea `install.sh` copiando este template, y la llena `coderhub-setup`.
 
 ## Archivos
 
-- **`profile.md`** — todos tus datos. Las demás skills lo leen para personalizar lo que hacen.
+- **`profile.md`** — la plantilla en blanco. `install.sh` la copia a `my-profile/profile.md`; ahí es donde van tus datos.
 
 ## Cómo se llena
 
@@ -14,11 +16,11 @@ Tu perfil personal. **Lo llena la skill `coderhub-setup` automáticamente** la p
    - **Transcripción de tu call con CoderHub** (la mejor opción — extrae bloqueos, anti-distracciones, banda salarial, etc.)
    - **Tu CV + URL de LinkedIn** (para datos técnicos y experiencia)
    - **Respuestas manuales** (te hace preguntas si falta algo)
-4. La skill llena `profile.md` y vos confirmás antes de guardar.
+4. La skill llena `my-profile/profile.md` y vos confirmás antes de guardar.
 
 ## Cómo actualizarlo después
 
-- **Cambio chico** (sumaste skill, cambió tu rol actual): editá `profile.md` directo a mano.
+- **Cambio chico** (sumaste skill, cambió tu rol actual): editá `my-profile/profile.md` directo a mano.
 - **Cambio grande** (cambiaste de empresa, mudanza, nuevo objetivo): re-corré `/coderhub-setup`.
 
 ## ¿Por qué un solo archivo md?

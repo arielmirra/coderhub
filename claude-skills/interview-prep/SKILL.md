@@ -1,6 +1,6 @@
 ---
 name: interview-prep
-description: Prepara al cliente para una entrevista específica en minutos. Lee profile-template/profile.md (datos del cliente) + un job posting que el cliente pega o linkea, y arma un coaching estructurado con roadmap de repaso, Q&A probables, match perfil↔rol, y tips. Tiene 3 modos de output: default (1h, completo), fast (15m, una oración por tema), y override (lo que el cliente pida — "solo conceptos de ciberseguridad", "system design en 5 min", etc). Respeta modo stealth + bloqueos diagnosticados + anti-distracciones del profile. Triggers on "preparame para esta entrevista", "interview prep", "/interview-prep", "tengo entrevista en X", "repasame Y antes de la entrevista", "/trainme". Inspirado en el CLI trainme de Braian Troncoso (mentee de CoderHub) — link en el README.
+description: Prepara al cliente para una entrevista específica en minutos. Lee my-profile/profile.md (datos del cliente) + un job posting que el cliente pega o linkea, y arma un coaching estructurado con roadmap de repaso, Q&A probables, match perfil↔rol, y tips. Tiene 3 modos de output: default (1h, completo), fast (15m, una oración por tema), y override (lo que el cliente pida — "solo conceptos de ciberseguridad", "system design en 5 min", etc). Respeta modo stealth + bloqueos diagnosticados + anti-distracciones del profile. Triggers on "preparame para esta entrevista", "interview prep", "/interview-prep", "tengo entrevista en X", "repasame Y antes de la entrevista", "/trainme". Inspirado en el CLI trainme de Braian Troncoso (mentee de CoderHub) — link en el README.
 ---
 
 # Interview Prep
@@ -9,7 +9,7 @@ Coaching pre-entrevista en minutos. **No es para profundizar — es para refresc
 
 ## Pre-requisitos
 
-- `profile-template/profile.md` lleno (corrió `coderhub-setup`).
+- `my-profile/profile.md` lleno (corrió `coderhub-setup`).
 - Un **job posting** (texto pegado, URL, o archivo).
 - Si falta el profile → derivar a `coderhub-setup` y parar.
 
@@ -25,7 +25,7 @@ Un bloque de coaching estructurado adaptado al modo elegido:
 
 ## Step 1 — Leer profile + parsear job posting
 
-1. Leer `profile-template/profile.md`. Extraer:
+1. Leer `my-profile/profile.md`. Extraer:
    - Stack técnico (principal + secundario + diferenciadores)
    - Logros con números
    - Rol target + banda salarial

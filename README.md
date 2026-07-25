@@ -25,8 +25,8 @@ Más skills se van sumando — este repo se actualiza periódicamente.
 
 ## Cómo arrancar
 
-1. **Instalá Claude Code** y configurá lo necesario. Ver [`INSTALL.md`](./INSTALL.md).
-2. **Corré `coderhub-setup`** la primera vez. Te va a hacer preguntas o pedir tu CV/transcripción de la call para llenar tu perfil automáticamente.
+1. **Instalá Claude Code** y corré `./install.sh` para inicializar el repo. Ver [`INSTALL.md`](./INSTALL.md).
+2. **Corré `coderhub-setup`** la primera vez. Te va a hacer preguntas o pedir tu CV/transcripción de la call para llenar tu perfil automáticamente en `my-profile/`.
 3. **Usá las otras skills.** Todas leen el perfil que generaste en el paso 2.
 
 ---
@@ -37,6 +37,7 @@ Más skills se van sumando — este repo se actualiza periódicamente.
 coderhub/
 ├── README.md                 ← este archivo
 ├── INSTALL.md                ← setup técnico (Claude Code, MCPs, etc.)
+├── install.sh                ← inicializa el repo (instala skills + crea my-profile/)
 │
 ├── claude-skills/            ← skills para Claude Code
 │   ├── coderhub-setup/       ← onboarding (correr 1ra vez)
@@ -44,10 +45,11 @@ coderhub/
 │   ├── linkedin-feed-job-hunter/
 │   └── _shared/              ← reglas compartidas (modo stealth, etc.)
 │
-├── profile-template/         ← template del perfil personal
-│   └── profile.md            ← lo edita coderhub-setup automáticamente
+├── profile-template/         ← plantilla en blanco (NO se modifica)
+│   └── profile.md            ← template reutilizable
 │
-└── examples/                 ← outputs de ejemplo (anonimizados)
+└── my-profile/               ← tu instancia personal (gitignoreada)
+    └── profile.md            ← lo llena coderhub-setup con tus datos
 ```
 
 ---

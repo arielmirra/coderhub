@@ -11,27 +11,21 @@ cd ~/coderhub   # o donde lo hayas clonado
 claude
 ```
 
-## 2. Cargar las skills
+## 2. Inicializar el repo
 
-Las skills de este repo viven en `claude-skills/`. Tenés 2 formas de usarlas:
-
-### Opción A — Cargarlas globales (recomendado)
+Corré el instalador una sola vez desde la raíz del repo:
 
 ```bash
-# Crear la carpeta global de skills si no existe
-mkdir -p ~/.claude/skills
-
-# Linkear (o copiar) las skills al directorio global
-ln -s "$(pwd)/claude-skills/coderhub-setup" ~/.claude/skills/
-ln -s "$(pwd)/claude-skills/linkedin-profile-optimizer" ~/.claude/skills/
-ln -s "$(pwd)/claude-skills/linkedin-feed-job-hunter" ~/.claude/skills/
+cd ~/coderhub   # o donde lo hayas clonado
+./install.sh
 ```
 
-Las skills van a estar disponibles en cualquier proyecto donde uses Claude Code.
+Es idempotente (podés correrlo las veces que quieras) y hace dos cosas:
 
-### Opción B — Solo dentro del repo
+1. **Instala las skills** en `~/.claude/skills` (symlinks que apuntan a este repo — si editás una skill, el cambio se refleja al toque). Quedan disponibles en cualquier proyecto donde uses Claude Code.
+2. **Crea `my-profile/`** con tu perfil personal, copiado del template en blanco. Esta carpeta está gitignoreada — tus datos (teléfono, salario) nunca se commitean.
 
-No hagas nada extra. Cuando corrés `claude` dentro de la carpeta del repo, Claude detecta `claude-skills/` automáticamente.
+Reiniciá `claude` para que tome las skills recién instaladas.
 
 ## 3. Configurar tu perfil (correr 1 sola vez)
 
@@ -46,7 +40,7 @@ Adentro de Claude:
 /coderhub-setup
 ```
 
-Te va a pedir transcripción de la call de discovery con CoderHub, o tu CV + perfil de LinkedIn. Con eso llena `profile-template/profile.md` automáticamente.
+Te va a pedir transcripción de la call de discovery con CoderHub, o tu CV + perfil de LinkedIn. Con eso llena `my-profile/profile.md` automáticamente. Si todavía no corriste `install.sh`, la propia skill lo detecta y lo corre por vos.
 
 ## 4. Usar las skills
 
@@ -77,8 +71,8 @@ Si no los tenés, las skills siguen funcionando — solo que algunos pasos los h
 
 ## Problemas comunes
 
-**"No me detecta las skills"** — verificá que estés ejecutando `claude` desde la carpeta del repo (Opción B) o que el symlink global exista (Opción A).
+**"No me detecta las skills"** — corré `./install.sh` y reiniciá `claude`. Verificá que existan los symlinks en `~/.claude/skills/`.
 
-**"La skill me pide datos que ya cargué"** — probablemente no corriste `coderhub-setup`. Corrélo primero para llenar `profile.md`.
+**"La skill me pide datos que ya cargué"** — probablemente no corriste `coderhub-setup`. Corrélo primero para llenar `my-profile/profile.md`.
 
 **Cualquier otra cosa** — pegame un WhatsApp.

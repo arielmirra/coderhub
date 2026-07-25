@@ -1,6 +1,6 @@
 ---
 name: linkedin-feed-job-hunter
-description: Monitorea el feed de LinkedIn del cliente buscando publicaciones de ofertas de trabajo (recruiters posteando, "we're hiring", links de aplicación, etc.). Cuando detecta una oferta relevante (matchea el stack del cliente y respeta sus filtros), aplica por canales privados — email directo, DM, o link externo — NUNCA comentando públicamente. Lee profile-template/profile.md para datos del cliente y modo stealth. Personaliza cada email/DM con experiencia específica que matchea la oferta. Triggers on "buscá ofertas en mi feed", "aplicá a las ofertas de mi feed", "linkedin feed apply", "/linkedin-feed-job-hunter", "monitoreá mi feed", "hunter de empleos linkedin".
+description: Monitorea el feed de LinkedIn del cliente buscando publicaciones de ofertas de trabajo (recruiters posteando, "we're hiring", links de aplicación, etc.). Cuando detecta una oferta relevante (matchea el stack del cliente y respeta sus filtros), aplica por canales privados — email directo, DM, o link externo — NUNCA comentando públicamente. Lee my-profile/profile.md para datos del cliente y modo stealth. Personaliza cada email/DM con experiencia específica que matchea la oferta. Triggers on "buscá ofertas en mi feed", "aplicá a las ofertas de mi feed", "linkedin feed apply", "/linkedin-feed-job-hunter", "monitoreá mi feed", "hunter de empleos linkedin".
 ---
 
 # LinkedIn Feed Job Hunter
@@ -9,7 +9,7 @@ Aplica automáticamente a ofertas que aparecen en el feed de LinkedIn del client
 
 ## Pre-requisitos
 
-- `profile-template/profile.md` lleno (corrió `coderhub-setup`).
+- `my-profile/profile.md` lleno (corrió `coderhub-setup`).
 - Si no existe → derivar a `coderhub-setup`.
 
 ## ⛔ Regla inapelable — confidencialidad absoluta
@@ -37,7 +37,7 @@ Detalle completo en `claude-skills/_shared/stealth-mode.md`.
 
 ## Step 1 — Leer profile y validar
 
-1. Leer `profile-template/profile.md`.
+1. Leer `my-profile/profile.md`.
 2. Verificar campos críticos:
    - Stack técnico (principal + secundario)
    - Objetivo de búsqueda (rol target + banda salarial + mercados)

@@ -1,6 +1,6 @@
 # Profile schema — qué tiene que tener `profile.md`
 
-Esquema de los campos esperados en `profile-template/profile.md`. Cualquier skill que lee el profile asume estos campos.
+Esquema de los campos esperados en `my-profile/profile.md`. Cualquier skill que lee el profile asume estos campos.
 
 ## Bloques obligatorios
 

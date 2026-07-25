@@ -1,6 +1,6 @@
 ---
 name: linkedin-profile-optimizer
-description: Optimiza el perfil de LinkedIn del cliente para maximizar visibilidad en búsquedas de recruiters (LinkedIn Recruiter). Lee profile-template/profile.md (creado previamente por coderhub-setup) y propone cambios concretos en cada sección — Headline, About, Experience, Skills, Featured, Projects, Education, URL, settings de visibilidad. Genera 3 variantes de Headline (keyword-heavy / narrativo / máximo SEO) y deja al cliente elegir. Respeta modo stealth si está activado. NO toca LinkedIn directamente — devuelve los textos para que el cliente los pegue, sección por sección, con confirmación. Triggers on "optimizá mi LinkedIn", "mejorar perfil LinkedIn", "/linkedin-profile-optimizer", "linkedin SEO", "aparecer en búsquedas de recruiters", "headline LinkedIn".
+description: Optimiza el perfil de LinkedIn del cliente para maximizar visibilidad en búsquedas de recruiters (LinkedIn Recruiter). Lee my-profile/profile.md (creado previamente por coderhub-setup) y propone cambios concretos en cada sección — Headline, About, Experience, Skills, Featured, Projects, Education, URL, settings de visibilidad. Genera 3 variantes de Headline (keyword-heavy / narrativo / máximo SEO) y deja al cliente elegir. Respeta modo stealth si está activado. NO toca LinkedIn directamente — devuelve los textos para que el cliente los pegue, sección por sección, con confirmación. Triggers on "optimizá mi LinkedIn", "mejorar perfil LinkedIn", "/linkedin-profile-optimizer", "linkedin SEO", "aparecer en búsquedas de recruiters", "headline LinkedIn".
 ---
 
 # LinkedIn Profile Optimizer
@@ -9,7 +9,7 @@ Optimiza el perfil de LinkedIn del cliente para que aparezca en las búsquedas q
 
 ## Pre-requisitos
 
-- `profile-template/profile.md` lleno (corrió `coderhub-setup` antes).
+- `my-profile/profile.md` lleno (corrió `coderhub-setup` antes).
 - Si no existe, esta skill **no avanza** — devuelve: *"No encuentro tu profile.md. Corré primero `/coderhub-setup`."*
 
 ## Outcome
@@ -31,7 +31,7 @@ Optimiza el perfil de LinkedIn del cliente para que aparezca en las búsquedas q
 
 ## Step 1 — Leer el profile y validar
 
-1. Leer `profile-template/profile.md`.
+1. Leer `my-profile/profile.md`.
 2. Verificar que tenga estos bloques mínimos:
    - Identidad (nombre, LinkedIn URL)
    - Stack técnico (principal + secundario)
