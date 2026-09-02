@@ -1,78 +1,80 @@
-# Setup técnico
+# Instalación — CoderHub Tooling
 
-## 1. Claude Code
-
-Instalá **Claude Code** desde [claude.com/claude-code](https://claude.com/claude-code).
-
-Es la CLI oficial de Anthropic. Una vez instalado, abrí una terminal en la carpeta de este repo:
-
-```bash
-cd ~/coderhub   # o donde lo hayas clonado
-claude
-```
-
-## 2. Inicializar el repo
-
-Corré el instalador una sola vez desde la raíz del repo:
-
-```bash
-cd ~/coderhub   # o donde lo hayas clonado
-./install.sh
-```
-
-Es idempotente (podés correrlo las veces que quieras) y hace dos cosas:
-
-1. **Instala las skills** en `~/.claude/skills` (symlinks que apuntan a este repo — si editás una skill, el cambio se refleja al toque). Quedan disponibles en cualquier proyecto donde uses Claude Code.
-2. **Crea `my-profile/`** con tu perfil personal, copiado del template en blanco. Esta carpeta está gitignoreada — tus datos (teléfono, salario) nunca se commitean.
-
-Reiniciá `claude` para que tome las skills recién instaladas.
-
-## 3. Configurar tu perfil (correr 1 sola vez)
-
-```bash
-cd ~/coderhub
-claude
-```
-
-Adentro de Claude:
-
-```
-/coderhub-setup
-```
-
-Te va a pedir transcripción de la call de discovery con CoderHub, o tu CV + perfil de LinkedIn. Con eso llena `my-profile/profile.md` automáticamente. Si todavía no corriste `install.sh`, la propia skill lo detecta y lo corre por vos.
-
-## 4. Usar las skills
-
-Una vez que tu perfil está configurado, tirá comandos en lenguaje natural:
-
-```
-optimizá mi LinkedIn
-```
-
-```
-buscá en mi feed de LinkedIn ofertas que matcheen y aplicá
-```
-
-Claude usa las skills correspondientes con tus datos.
+Guía para dejar el tooling andando en tu compu. Toma 5 minutos, se hace una sola vez.
 
 ---
 
-## MCPs opcionales (recomendados pero no obligatorios)
+## 1. Requisitos
 
-Algunas skills mejoran si tenés estos MCPs configurados:
+- **Claude Code** — la CLI oficial de Anthropic. Bajala de [claude.com/claude-code](https://claude.com/claude-code) e instalala.
+- **typst** (solo para el CV) — el compilador que arma tu CV en PDF.
+  - Mac: `brew install typst`
+  - Windows / Linux: ver [typst.app](https://github.com/typst/typst?tab=readme-ov-file#installation)
+  - Si no lo instalás, todo lo demás funciona igual — solo `cv-builder` te va a pedir que lo instales cuando lo uses.
 
-- **Gmail MCP** — para que las skills manden emails directo (sin copiar-pegar). Setup: ver docs de Anthropic.
-- **LinkedIn MCP / browser MCP** — para que las skills puedan leer tu feed sin pasarle screenshots.
+MCPs opcionales (mejoran algunas skills, no son obligatorios): Apify o browser MCP para leer tu LinkedIn/feed sin copiar-pegar, Gmail MCP para mandar mails directo. Sin ellos las skills siguen andando — algunos pasos los hacés a mano.
 
-Si no los tenés, las skills siguen funcionando — solo que algunos pasos los hacés vos a mano (copy-paste, mandar email desde Gmail web, etc.).
+---
+
+## 2. Instalar el plugin
+
+Abrí Claude Code en cualquier carpeta y corré adentro:
+
+```
+/plugin marketplace add arielmirra/coderhub
+/plugin install coderhub@coderhub
+```
+
+- La primera línea registra el marketplace de CoderHub (un repo de GitHub).
+- La segunda instala el plugin `coderhub`. Elegí scope **user** cuando te pregunte — así las skills están disponibles en cualquier proyecto.
+
+Las skills quedan disponibles con el prefijo `coderhub:` — por ejemplo `/coderhub:coderhub-setup`.
+
+---
+
+## 3. Configurar tu perfil (una sola vez)
+
+```
+/coderhub:coderhub-setup
+```
+
+Te va a pedir la transcripción de tu call de discovery con CoderHub, o tu CV + perfil de LinkedIn. Con eso llena tu perfil automáticamente en **`~/.coderhub/profile.md`** — un archivo local a tu máquina que **nunca se sube a ningún lado** (ahí viven tus datos: teléfono, salario, etc.).
+
+Todas las demás skills leen ese perfil, así que este paso va primero.
+
+> Si sos alumno de CoderHub, es posible que el equipo ya te haya armado el `profile.md` desde tu call y tu LinkedIn — en ese caso `coderhub-setup` te lo muestra para que lo confirmes en vez de tipear todo.
+
+---
+
+## 4. Usar las skills
+
+Tirá comandos en lenguaje natural — Claude elige la skill:
+
+| Querés... | Decile algo como... |
+|---|---|
+| Optimizar tu LinkedIn para recruiters | "optimizá mi LinkedIn" |
+| Aplicar a ofertas de tu feed | "buscá ofertas en mi feed y aplicá" |
+| Prepararte para una entrevista | "preparame para esta entrevista" (+ pegás el job posting) |
+| Armar tu CV en PDF | "armame el CV" (o tailorearlo a una oferta) |
+
+---
+
+## 5. Actualizaciones
+
+Cuando CoderHub actualiza el tooling, lo bajás con:
+
+```
+/plugin marketplace update coderhub
+/reload-plugins
+```
 
 ---
 
 ## Problemas comunes
 
-**"No me detecta las skills"** — corré `./install.sh` y reiniciá `claude`. Verificá que existan los symlinks en `~/.claude/skills/`.
+- **"No me detecta las skills"** — corré `/reload-plugins`, o reiniciá `claude`. Verificá con `/plugin` que `coderhub` figure instalado.
+- **"typst: command not found" al armar el CV** — instalá typst (ver Requisitos). El resto de las skills no lo necesitan.
+- **"La skill me pide datos que ya cargué"** — corré `/coderhub:coderhub-setup` primero para llenar `~/.coderhub/profile.md`.
+- **Cualquier otra cosa** — pegame un WhatsApp.
 
-**"La skill me pide datos que ya cargué"** — probablemente no corriste `coderhub-setup`. Corrélo primero para llenar `my-profile/profile.md`.
-
-**Cualquier otra cosa** — pegame un WhatsApp.
+— Ariel

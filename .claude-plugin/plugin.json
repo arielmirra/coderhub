@@ -1,0 +1,9 @@
+{
+  "name": "coderhub",
+  "displayName": "CoderHub",
+  "version": "1.0.0",
+  "description": "Herramientas de Claude Code para acelerar tu búsqueda laboral dentro de la mentoría CoderHub: setup de perfil, optimización de LinkedIn, hunter de ofertas, prep de entrevistas y armado de CV.",
+  "author": { "name": "Ariel Mirra" },
+  "homepage": "https://arielmirra.com",
+  "license": "UNLICENSED"
+}

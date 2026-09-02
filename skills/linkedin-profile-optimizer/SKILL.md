@@ -1,6 +1,6 @@
 ---
 name: linkedin-profile-optimizer
-description: Optimiza el perfil de LinkedIn del cliente para maximizar visibilidad en búsquedas de recruiters (LinkedIn Recruiter). Lee my-profile/profile.md (creado previamente por coderhub-setup) y propone cambios concretos en cada sección — Headline, About, Experience, Skills, Featured, Projects, Education, URL, settings de visibilidad. Genera 3 variantes de Headline (keyword-heavy / narrativo / máximo SEO) y deja al cliente elegir. Respeta modo stealth si está activado. NO toca LinkedIn directamente — devuelve los textos para que el cliente los pegue, sección por sección, con confirmación. Triggers on "optimizá mi LinkedIn", "mejorar perfil LinkedIn", "/linkedin-profile-optimizer", "linkedin SEO", "aparecer en búsquedas de recruiters", "headline LinkedIn".
+description: Optimiza el perfil de LinkedIn del cliente para maximizar visibilidad en búsquedas de recruiters (LinkedIn Recruiter). Lee ~/.coderhub/profile.md (creado previamente por coderhub-setup) y propone cambios concretos en cada sección — Headline, About, Experience, Skills, Featured, Projects, Education, URL, settings de visibilidad. Genera 3 variantes de Headline (keyword-heavy / narrativo / máximo SEO) y deja al cliente elegir. Respeta modo stealth si está activado. NO toca LinkedIn directamente — devuelve los textos para que el cliente los pegue, sección por sección, con confirmación. Triggers on "optimizá mi LinkedIn", "mejorar perfil LinkedIn", "/linkedin-profile-optimizer", "linkedin SEO", "aparecer en búsquedas de recruiters", "headline LinkedIn".
 ---
 
 # LinkedIn Profile Optimizer
@@ -9,7 +9,7 @@ Optimiza el perfil de LinkedIn del cliente para que aparezca en las búsquedas q
 
 ## Pre-requisitos
 
-- `my-profile/profile.md` lleno (corrió `coderhub-setup` antes).
+- `~/.coderhub/profile.md` lleno (corrió `coderhub-setup` antes).
 - Si no existe, esta skill **no avanza** — devuelve: *"No encuentro tu profile.md. Corré primero `/coderhub-setup`."*
 
 ## Outcome
@@ -31,7 +31,7 @@ Optimiza el perfil de LinkedIn del cliente para que aparezca en las búsquedas q
 
 ## Step 1 — Leer el profile y validar
 
-1. Leer `my-profile/profile.md`.
+1. Leer `~/.coderhub/profile.md`.
 2. Verificar que tenga estos bloques mínimos:
    - Identidad (nombre, LinkedIn URL)
    - Stack técnico (principal + secundario)
@@ -43,18 +43,18 @@ Optimiza el perfil de LinkedIn del cliente para que aparezca en las búsquedas q
 
 ## Step 2 — Detectar modo stealth
 
-Leer `claude-skills/_shared/stealth-mode.md` y aplicar reglas según el campo del profile.
+Leer `${CLAUDE_PLUGIN_ROOT}/shared/stealth-mode.md` y aplicar reglas según el campo del profile.
 
 - **Stealth ON** → settings recomiendan "Signal interest to recruiters" pero NO frame verde público; engagement strategy evita posts de hiring.
 - **Stealth OFF** → settings activan frame verde público; estrategia incluye comentar/postear sobre búsqueda activa.
 
 ## Step 3 — Construir las 9 secciones
 
-Usar las plantillas en `references/section-templates.md`. Cada sección sale parametrizada con los datos del profile, no inventada.
+Usar las plantillas en `${CLAUDE_SKILL_DIR}/references/section-templates.md`. Cada sección sale parametrizada con los datos del profile, no inventada.
 
 ### 3.1 Headline (3 variantes)
 
-Generar 3 opciones siguiendo `references/section-templates.md`:
+Generar 3 opciones siguiendo `${CLAUDE_SKILL_DIR}/references/section-templates.md`:
 
 - **A — Keyword-heavy:** roles + tecnologías separadas por `·` + diferenciador + 🌍 si es remoto. Máximo SEO.
 - **B — Narrativo:** rol + stack agrupado + "Building/Specialized in..." + Open to Remote.
@@ -142,7 +142,7 @@ Recomendar `linkedin.com/in/{nombre-apellido}` si está disponible, o mantener l
 
 ### 3.9 Settings de visibilidad y Open to Work
 
-Configurar según `_shared/stealth-mode.md`:
+Configurar según `${CLAUDE_PLUGIN_ROOT}/shared/stealth-mode.md`:
 
 | Setting | Stealth ON | Stealth OFF |
 |---|---|---|
@@ -160,7 +160,7 @@ Configurar Open to Work con:
 
 ## Step 4 — Estrategia de keywords (la teoría)
 
-Después de mostrar los textos, explicar al cliente cómo funciona LinkedIn Recruiter (peso por campo). Ver `references/linkedin-seo-strategy.md` para la tabla completa.
+Después de mostrar los textos, explicar al cliente cómo funciona LinkedIn Recruiter (peso por campo). Ver `${CLAUDE_SKILL_DIR}/references/linkedin-seo-strategy.md` para la tabla completa.
 
 Mostrar al final cuáles son las 10-15 keywords prioritarias para su rol target y en qué campos deberían aparecer (cuántas veces).
 
@@ -168,7 +168,7 @@ Mostrar al final cuáles son las 10-15 keywords prioritarias para su rol target 
 
 Recomendar acciones diarias/semanales para amplificar visibilidad orgánica. Las acciones cambian según stealth.
 
-Ver `references/engagement-strategy.md`.
+Ver `${CLAUDE_SKILL_DIR}/references/engagement-strategy.md`.
 
 ## Step 6 — Output final
 

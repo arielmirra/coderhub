@@ -2,7 +2,7 @@
 
 ## ¿Cuándo aplica?
 
-Cualquier skill que toque LinkedIn, redes sociales, o emails verifica primero el campo **"Modo stealth requerido"** en `my-profile/profile.md`.
+Cualquier skill que toque LinkedIn, redes sociales, o emails verifica primero el campo **"Modo stealth requerido"** en `~/.coderhub/profile.md`.
 
 ## Si stealth = ON
 

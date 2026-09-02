@@ -1,0 +1,11 @@
+{
+  "name": "coderhub",
+  "owner": { "name": "Ariel Mirra" },
+  "plugins": [
+    {
+      "name": "coderhub",
+      "source": "./",
+      "description": "Tooling de CoderHub para alumnos: setup, LinkedIn, entrevistas y CV."
+    }
+  ]
+}

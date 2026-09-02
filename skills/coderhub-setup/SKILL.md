@@ -1,37 +1,41 @@
 ---
 name: coderhub-setup
-description: Onboarding inicial del cliente CoderHub. Llena profile.md automáticamente extrayendo datos de la transcripción de la call de discovery con el equipo de CoderHub, del CV del cliente, o de su perfil de LinkedIn. Es la primera skill que cualquier cliente nuevo tiene que correr — el resto de las skills (linkedin-profile-optimizer, linkedin-feed-job-hunter, etc.) leen el profile que esta skill genera. Triggers on "/coderhub-setup", "configurar mi perfil", "setup inicial", "arrancar con CoderHub", "primera vez que uso esto". Usa solo herramientas de read y write — no manda emails, no toca LinkedIn, no posta nada. La salida es un único archivo: my-profile/profile.md actualizado con todos los datos del cliente.
+description: Onboarding inicial del cliente CoderHub. Llena profile.md automáticamente extrayendo datos de la transcripción de la call de discovery con el equipo de CoderHub, del CV del cliente, o de su perfil de LinkedIn. Es la primera skill que cualquier cliente nuevo tiene que correr — el resto de las skills (linkedin-profile-optimizer, linkedin-feed-job-hunter, cv-builder, etc.) leen el profile que esta skill genera. Triggers on "/coderhub-setup", "configurar mi perfil", "setup inicial", "arrancar con CoderHub", "primera vez que uso esto". Usa solo herramientas de read y write — no manda emails, no toca LinkedIn, no posta nada. La salida es un único archivo: ~/.coderhub/profile.md actualizado con todos los datos del cliente.
 ---
 
 # CoderHub Setup
 
-Primera skill que corre el cliente cuando baja el repo. Llena `my-profile/profile.md` con sus datos para que las otras skills (LinkedIn optimizer, feed apply, etc.) sepan quién es.
+Primera skill que corre el alumno después de instalar el plugin de CoderHub. Llena `~/.coderhub/profile.md` con sus datos para que las otras skills (LinkedIn optimizer, feed apply, cv-builder, etc.) sepan quién es.
 
 ## Outcome
 
-- `my-profile/profile.md` lleno con todos los campos del schema (`claude-skills/_shared/profile-schema.md`)
+- `~/.coderhub/profile.md` lleno con todos los campos del schema (`${CLAUDE_PLUGIN_ROOT}/shared/profile-schema.md`)
 - El cliente confirma cada bloque antes de guardar
 - Una sola corrida resuelve todo el onboarding (sin micro-preguntas dispersas en el tiempo)
 
 ---
 
-## Step 0 — Verificar que el repo esté inicializado
+## Step 0 — Preparar el home del perfil
 
-**Antes de todo**, chequear si el repo está inicializado. La señal es la existencia de `my-profile/profile.md`.
+El perfil del alumno vive en `~/.coderhub/profile.md` — un home fijo, independiente del directorio donde el alumno abra Claude Code, que sobrevive a los updates del plugin. Ahí también van sus outputs (CV generado, logs).
 
-1. Si `my-profile/profile.md` **NO existe**, el repo no está inicializado. Correr el instalador desde la raíz del repo:
+**Antes de todo:**
+
+1. Asegurar que el directorio exista:
 
    ```bash
-   ./install.sh
+   mkdir -p ~/.coderhub
    ```
 
-   Esto: (a) instala las skills en `~/.claude/skills` (symlinks al repo), y (b) crea `my-profile/profile.md` copiando el template en blanco de `profile-template/profile.md`. Es idempotente — se puede correr sin miedo.
+2. Si `~/.coderhub/profile.md` **NO existe**, crearlo copiando el template en blanco que viene con el plugin:
 
-2. Si `install.sh` no existe o falla, hacer el fallback manual: `mkdir -p my-profile && cp profile-template/profile.md my-profile/profile.md`.
+   ```bash
+   cp "${CLAUDE_PLUGIN_ROOT}/profile-template/profile.md" ~/.coderhub/profile.md
+   ```
 
-3. Si `my-profile/profile.md` **ya existe** con datos cargados, avisar al cliente que ya tiene perfil y preguntar si quiere actualizarlo o empezar de cero.
+3. Si `~/.coderhub/profile.md` **ya existe** con datos cargados, avisar al alumno que ya tiene perfil y preguntar si quiere actualizarlo o empezar de cero.
 
-> El template en `profile-template/profile.md` NUNCA se modifica — es la plantilla en blanco reutilizable. Todo lo del cliente vive en `my-profile/profile.md` (gitignoreado).
+> El template en `${CLAUDE_PLUGIN_ROOT}/profile-template/profile.md` NUNCA se modifica — es la plantilla en blanco reutilizable que trae el plugin. Todo lo del alumno vive en `~/.coderhub/profile.md` (local a su máquina, nunca se sube a ningún lado).
 
 ---
 
@@ -128,7 +132,7 @@ Hacer preguntas en bloques temáticos (no una por una):
 > "Qué rol estás buscando, banda salarial (piso, realista, stretch — en USD/mes o EUR/mes), mercados target (Argentina, España, US, LATAM, Global), y qué tipo de empresa NO querés (ej. 'no quiero consultoras intermediarias')."
 
 **Bloque 6 — Confidencialidad (CRÍTICO):**
-> "Antes de preguntarte: **modo stealth** = 'tu empresa actual no se entera de que estás buscando'. Con stealth ON, las skills evitan todo lo visible (likes/comentarios en ofertas, 'Open to Work' verde público) pero SÍ hacen lo privado que no te delata (señal a recruiters, DMs, solicitudes de conexión, formularios externos). Con stealth OFF hacen todo, incluido lo público. Detalle completo en `claude-skills/_shared/stealth-mode.md`.
+> "Antes de preguntarte: **modo stealth** = 'tu empresa actual no se entera de que estás buscando'. Con stealth ON, las skills evitan todo lo visible (likes/comentarios en ofertas, 'Open to Work' verde público) pero SÍ hacen lo privado que no te delata (señal a recruiters, DMs, solicitudes de conexión, formularios externos). Con stealth OFF hacen todo, incluido lo público. Detalle completo en `${CLAUDE_PLUGIN_ROOT}/shared/stealth-mode.md`.
 >
 > Dicho eso: ¿estás empleado actualmente? ¿Tu empresa actual debe enterarse que estás buscando? Si no debe enterarse, modo stealth = ON."
 
@@ -139,7 +143,7 @@ Hacer preguntas en bloques temáticos (no una por una):
 
 ## Step 3 — Construir el profile
 
-Generar `my-profile/profile.md` siguiendo el schema en `claude-skills/_shared/profile-schema.md`. Reglas:
+Generar `~/.coderhub/profile.md` siguiendo el schema en `${CLAUDE_PLUGIN_ROOT}/shared/profile-schema.md`. Reglas:
 
 1. **Normalizar formatos:**
    - WhatsApp: `+{código país}{código área}{número}` todo junto, sin espacios ni guiones (ej. `+5491153190688`).
@@ -182,7 +186,7 @@ Listo, armé tu perfil con los datos que me pasaste. Te lo paso bloque por bloqu
 Al final, mostrar la lista de campos que quedaron en `(pendiente)` y avisar:
 
 ```
-✅ Tu perfil está guardado en `my-profile/profile.md`.
+✅ Tu perfil está guardado en `~/.coderhub/profile.md`.
 
 ⚠️ Estos campos quedaron sin completar:
 - Banda salarial stretch (no apareció en la transcripción)
@@ -197,7 +201,7 @@ Próximo paso: usá `linkedin-profile-optimizer` para optimizar tu perfil de Lin
 
 ## Step 5 — Guardar
 
-Escribir el resultado en `my-profile/profile.md` (la instancia del cliente, creada en Step 0). **Nunca** escribir en `profile-template/profile.md` — ese es el template en blanco.
+Escribir el resultado en `~/.coderhub/profile.md` (la instancia del alumno, creada en Step 0). **Nunca** escribir en `${CLAUDE_PLUGIN_ROOT}/profile-template/profile.md` — ese es el template en blanco que trae el plugin.
 
 Agregar al final del archivo:
 

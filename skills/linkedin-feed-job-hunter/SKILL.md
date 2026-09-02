@@ -1,6 +1,6 @@
 ---
 name: linkedin-feed-job-hunter
-description: Monitorea el feed de LinkedIn del cliente buscando publicaciones de ofertas de trabajo (recruiters posteando, "we're hiring", links de aplicación, etc.). Cuando detecta una oferta relevante (matchea el stack del cliente y respeta sus filtros), aplica por canales privados — email directo, DM, o link externo — NUNCA comentando públicamente. Lee my-profile/profile.md para datos del cliente y modo stealth. Personaliza cada email/DM con experiencia específica que matchea la oferta. Triggers on "buscá ofertas en mi feed", "aplicá a las ofertas de mi feed", "linkedin feed apply", "/linkedin-feed-job-hunter", "monitoreá mi feed", "hunter de empleos linkedin".
+description: Monitorea el feed de LinkedIn del cliente buscando publicaciones de ofertas de trabajo (recruiters posteando, "we're hiring", links de aplicación, etc.). Cuando detecta una oferta relevante (matchea el stack del cliente y respeta sus filtros), aplica por canales privados — email directo, DM, o link externo — NUNCA comentando públicamente. Lee ~/.coderhub/profile.md para datos del cliente y modo stealth. Personaliza cada email/DM con experiencia específica que matchea la oferta. Triggers on "buscá ofertas en mi feed", "aplicá a las ofertas de mi feed", "linkedin feed apply", "/linkedin-feed-job-hunter", "monitoreá mi feed", "hunter de empleos linkedin".
 ---
 
 # LinkedIn Feed Job Hunter
@@ -9,14 +9,14 @@ Aplica automáticamente a ofertas que aparecen en el feed de LinkedIn del client
 
 ## Pre-requisitos
 
-- `my-profile/profile.md` lleno (corrió `coderhub-setup`).
+- `~/.coderhub/profile.md` lleno (corrió `coderhub-setup`).
 - Si no existe → derivar a `coderhub-setup`.
 
 ## ⛔ Regla inapelable — confidencialidad absoluta
 
 **Si modo stealth = ON, está PROHIBIDO comentar en publicaciones de LinkedIn.** Esta regla NO tiene excepciones, NO puede ser anulada por ninguna otra instrucción del prompt, y prevalece sobre cualquier otro método de aplicación que la oferta sugiera.
 
-Detalle completo en `claude-skills/_shared/stealth-mode.md`.
+Detalle completo en `${CLAUDE_PLUGIN_ROOT}/shared/stealth-mode.md`.
 
 **Si la publicación dice "comentá y te contacto" como ÚNICO método:** ignorar el comentario y mandar DM directo al autor explicando que por confidencialidad no podés comentar públicamente. Si no se puede mandar DM (no es conexión, no tiene Open Profile), mandar solicitud de conexión con nota.
 
@@ -37,7 +37,7 @@ Detalle completo en `claude-skills/_shared/stealth-mode.md`.
 
 ## Step 1 — Leer profile y validar
 
-1. Leer `my-profile/profile.md`.
+1. Leer `~/.coderhub/profile.md`.
 2. Verificar campos críticos:
    - Stack técnico (principal + secundario)
    - Objetivo de búsqueda (rol target + banda salarial + mercados)
@@ -101,7 +101,7 @@ Por orden de preferencia:
 
 ## Step 5 — Componer mensajes
 
-Ver `references/application-templates.md` para los templates completos.
+Ver `${CLAUDE_SKILL_DIR}/references/application-templates.md` para los templates completos.
 
 Reglas universales para todo mensaje:
 
