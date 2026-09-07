@@ -49,7 +49,8 @@ Preguntar al cliente **en un solo bloque** qué tiene a mano (puede combinar var
 1. 📞 Transcripción de tu call de discovery con CoderHub (lo más rico — sale Fathom o equivalente)
 2. 📄 CV en texto / PDF
 3. 🔗 URL de tu LinkedIn (tengo que poder leerla)
-4. ✍️ Te respondo a mano (te hago preguntas y vamos llenando)
+4. 🐙 Tu usuario de GitHub (lo traigo solo, gratis, sin configurar nada)
+5. ✍️ Te respondo a mano (te hago preguntas y vamos llenando)
 
 Tirame las que tengas. Cuantas más, mejor — combino todo.
 ```
@@ -111,6 +112,24 @@ Tirame las que tengas. Cuantas más, mejor — combino todo.
    - Skills (si son visibles)
    - Education
 2. Si no se puede acceder programáticamente, pedir al cliente que copie y pegue el contenido de cada sección.
+
+> **Nota Apify:** LinkedIn es la única fuente que necesita un scraper (Apify o un MCP de LinkedIn). Si el alumno no lo tiene configurado, NO bloquear — pedirle que pegue el contenido o pase el CV. El scraper es un plus, no un requisito.
+
+### Si hay usuario de GitHub
+
+GitHub es fuente **gratis y sin setup** — se trae con la API pública, sin Apify. Cualquier alumno con el CLI `gh` (o vía REST pública) puede. Traé lo básico:
+
+```bash
+gh api users/{usuario} --jq '"desde \(.created_at[0:10]) · repos:\(.public_repos) · followers:\(.followers)"'
+```
+
+**Extraé ESTRATÉGICAMENTE según seniority — no dumpear repos.** Para un perfil **Senior/Lead**, lo que importa de GitHub es:
+- **Longevidad demostrable:** año de la cuenta / primera actividad → "programando desde {año} (~N años)". Es el señal más fuerte y el más subestimado.
+- **Actividad constante:** pushes recientes ("sigue construyendo, no está oxidado").
+- **Señales sociales:** followers si son notables.
+- **Solo 1-2 proyectos realmente destacables** (con estrellas, un producto real, o algo relevante al rol target). Si no hay ninguno standout, no forzar — el valor es longevidad + constancia, no el catálogo.
+
+**Nunca** listar sandboxes de aprendizaje ni repos triviales: para senior restan (señalizan junior) y alargan el CV al pedo. Para junior/semi, ahí sí un proyecto propio bien hecho puede sumar.
 
 ### Si solo hay respuestas a mano
 
@@ -219,6 +238,8 @@ Agregar al final del archivo:
 4. **No mandar nada.** Esta skill SOLO lee y escribe en disco local. No toca LinkedIn, email, ni redes.
 5. **Fuentes oficiales primero.** Si hay LinkedIn URL accesible, usar eso antes que asumir desde CV (LinkedIn refleja el estado actual; CV puede estar desactualizado).
 6. **Tono Ariel en las preguntas.** Voseo argentino, directo, sin formalismos. "Tirame en un mensaje..." mejor que "Por favor proporcione...".
+7. **Perfil orientado a conseguir trabajo tech.** El `profile.md` es la identidad profesional del alumno para su búsqueda laboral como ingeniero/dev. NO incluir lo que no suma a un rol técnico — emprendimientos propios, podcasts, creación de contenido, coaching, hobbies — aunque aparezca en el LinkedIn o el CV. El foco es 100% "conseguir el próximo trabajo de ingeniería". Ante la duda, dejar afuera lo que no aporta al perfil técnico. (Un blog técnico o proyectos open-source SÍ suman; un podcast de productividad no.)
+8. **GitHub estratégico según seniority.** Para **Senior/Lead**, de GitHub se destaca **longevidad** (años programando demostrables desde el año de la cuenta), **actividad constante** y a lo sumo **1-2 proyectos realmente notables** — NUNCA un dump de repos ni sandboxes de aprendizaje (señaliza junior y alarga el CV al pedo). Para junior/semi, un proyecto propio bien hecho sí puede sumar. Default: longevidad + constancia, no catálogo.
 
 ---
 

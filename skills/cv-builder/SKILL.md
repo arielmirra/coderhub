@@ -36,7 +36,8 @@ Arma el CV en PDF del alumno desde su `~/.coderhub/profile.md`, con el template 
    ```
    Para armar el CV necesitás typst (el compilador que genera el PDF). Instalalo:
    • Mac:      brew install typst
-   • Win/Linux: https://github.com/typst/typst#installation
+   • Windows:  winget install Typst.Typst    (o: scoop install typst)
+   • Linux:    ver https://github.com/typst/typst#installation
    Instalalo y volvé a tirarme "armame el CV".
    ```
    y parar.
@@ -45,12 +46,20 @@ Arma el CV en PDF del alumno desde su `~/.coderhub/profile.md`, con el template 
 
 1. Leer `~/.coderhub/profile.md` entero.
 2. Verificar que tenga los bloques mínimos para un CV: Identidad, Rol y experiencia, Stack técnico, Logros, Educación, Idiomas. Si falta algo importante, listar qué falta y ofrecer completar el perfil (derivar a `coderhub-setup`) — pero si hay lo suficiente para un CV decente, seguir y avisar qué quedó flojo.
-3. **¿Hay oferta?** Si el alumno pegó un job posting (texto/URL), es **modo tailoreado**. Si no, es **modo general** (CV parejo que sirve para postular en general).
-4. **Idioma del CV:** ES o EN según el target del alumno (campo Objetivo → mercados) y, si hay oferta, el idioma de la oferta. Si el target es US/Global → EN. Si es LATAM hispano → ES. Ante la duda, preguntar una vez.
+3. **¿Hay una oferta (JD) para tailorear?** Si el alumno ya pegó un job posting (texto/URL), usarlo → **modo tailoreado**. Si NO pasó ninguno, **preguntar antes de generar**: *"¿Tenés el texto de alguna oferta (JD) a la que quieras apuntar este CV? Si me la pasás, lo adapto a ese puesto — reordeno stack, logros y proyectos para el match. Si no, te armo uno general para postular en general."* Con oferta → modo tailoreado; sin oferta → modo general.
+4. **Idioma del CV** — decidir según el target del perfil (campo Objetivo → mercados) y, si hay oferta, el idioma de la oferta:
+   - Target **solo hispano** (Argentina, España, LATAM) → **ES**.
+   - Target **solo inglés** (US, Global, Europa no-hispana) → **EN**.
+   - Target **bilingüe / mixto** (ej. LATAM + US) → **generar las DOS versiones** (una en ES y una en EN). Es el caso más común y tener las dos listas le ahorra al alumno pedirlo.
+   - Si hay una oferta puntual → priorizar el idioma de esa oferta.
+   - Si el target no está claro en el perfil → preguntar una vez: *"¿El CV lo querés en español, en inglés, o las dos versiones?"*
+   No mezclar idiomas dentro de un mismo CV.
 
 ## Step 3 — Armar el contenido
 
 Leer `${CLAUDE_SKILL_DIR}/references/typst-template.md` — tiene el API del package, el template de ejemplo, y el mapeo `profile.md → secciones del CV`.
+
+**Leer `${CLAUDE_SKILL_DIR}/references/quality-bar.md` antes de generar** — destila CVs reales de alumnos que quedaron muy bien: estructura canónica, la fórmula del PROFILE, la regla de oro (casi todos los bullets cuantificados), el diferenciador AI-native, cómo agrupar skills, el truco del `date:` en proyectos, y un checklist final. Es el nivel a igualar — no se copian datos, se copia el nivel y la estructura.
 
 Mapear el perfil a las secciones: Perfil, Experiencia Laboral, Educación, Habilidades Técnicas, Proyectos Relevantes, Idiomas.
 
@@ -63,16 +72,20 @@ Mapear el perfil a las secciones: Perfil, Experiencia Laboral, Educación, Habil
 ## Step 4 — Generar el .typ y compilar
 
 1. Crear el directorio: `mkdir -p ~/.coderhub/cv`.
-2. Escribir el `main.typ` en `~/.coderhub/cv/main.typ` siguiendo el formato exacto de las funciones del package (ver reference). Usar `@preview/silver-dev-cv:1.0.2`.
-3. Compilar:
+2. Por cada idioma decidido en Step 2 (uno o dos), escribir un `.typ` en `~/.coderhub/cv/` siguiendo el formato exacto de las funciones del package (ver reference). Usar `@preview/silver-dev-cv:1.0.2`. Naming:
+   - Una sola versión → `{slug}-cv.typ`
+   - Dos versiones → `{slug}-cv-es.typ` y `{slug}-cv-en.typ`
+
+   donde `{slug}` es el nombre del alumno en kebab-case (ej. `matias-sanchez`).
+3. Compilar cada `.typ` a su PDF con el mismo nombre:
    ```bash
-   typst compile ~/.coderhub/cv/main.typ ~/.coderhub/cv/{slug}-cv.pdf
+   typst compile ~/.coderhub/cv/{slug}-cv.typ ~/.coderhub/cv/{slug}-cv.pdf
    ```
-   donde `{slug}` es el nombre del alumno en kebab-case (ej. `matias-sanchez-cv.pdf`). El package se baja solo en el primer compile (necesita internet una vez).
-4. **Si el compile falla:** mostrar el error de typst + el bloque del `main.typ` cerca del error, arreglar la sintaxis, y reintentar. Errores típicos: comas faltantes en `contacts`, bullets mal formateados en `description`, comillas sin cerrar. No devolver un error crudo sin contexto.
-5. Copiar el PDF a `~/Downloads/` como conveniencia:
+   El package se baja solo en el primer compile (necesita internet una vez).
+4. **Si el compile falla:** mostrar el error de typst + el bloque del `.typ` cerca del error, arreglar la sintaxis, y reintentar. Errores típicos: comas faltantes en `contacts`, bullets mal formateados en `description`, comillas sin cerrar. No devolver un error crudo sin contexto.
+5. Copiar el/los PDF a `~/Downloads/` como conveniencia:
    ```bash
-   cp ~/.coderhub/cv/{slug}-cv.pdf ~/Downloads/
+   cp ~/.coderhub/cv/{slug}-cv*.pdf ~/Downloads/
    ```
 
 ## Step 5 — Confirmar + ofrecer ajustes
@@ -101,6 +114,11 @@ Si el alumno marca un problema con el output (formato, orden, algo mal mapeado d
 - **2026-09-02** — No inventar experiencia, logros ni tecnologías. El `~/.coderhub/profile.md` es la única fuente de verdad. Si falta un dato, se omite la línea; no se rellena con genéricos.
 - **2026-09-02** — El output SIEMPRE va a `~/.coderhub/cv/` (+ copia en `~/Downloads/`). Nunca escribir el CV en el directorio actual del alumno ni dentro del plugin.
 - **2026-09-02** — typst es dependencia externa del alumno. El plugin no la instala — si falta, se da el hint y se para (sin error feo).
+- **2026-09-04** — **Bullets como RESULTADO, no como objetivo** (corrección #1 de Cami en 3 CV reviews): no "hice X *para* lograr Y"; sí "hice X *que* logró Y". Y sacar señales que auto-filtran/restan: `Open to Remote` y `Available to start immediately` en el header = señal junior/desesperación (debilitan la negociación) → fuera. Título al nivel **target**, no al "seguro". Método completo + feedback de Cami en `${CLAUDE_SKILL_DIR}/references/quality-bar.md` (§5, §12, §14).
+- **2026-09-02** — **El CV es SIEMPRE para conseguir trabajo como ingeniero/dev.** Dejar afuera todo lo que no suma a un rol técnico (emprendimientos, podcasts, creación de contenido, coaching, hobbies), aunque esté en el perfil. El CV vende al ingeniero, no a la persona completa. Un blog técnico u open-source sí suma.
+- **2026-09-02** — **Siempre preguntar por una JD antes de generar** (si el alumno no la pasó). Un CV tailoreado a la oferta rinde mucho más que uno genérico. Ver Step 2.
+- **2026-09-02** — **Anti-slop: nada de filler promocional ni tells de IA.** El impacto lo dan los NÚMEROS, no los adjetivos. Prohibido el relleno de resume/IA: `at scale`, `proven track record`, `deep expertise`, `measurably`, `single-handedly`, `end-to-end`, `passionate`, `results-driven`, `spearheaded`, `leverage`/`utilize`, `cutting-edge`, `world-class`, `robust/seamless/scalable` como adjetivos sueltos. Regla simple: **si un adjetivo o adverbio no agrega un hecho o un número, va afuera.** Además: **máximo 1 em-dash por bullet** (preferir punto, coma o paréntesis — el abuso de `—` es tell de IA); no forzar rule-of-three; verbo de acción concreto + qué + tech + resultado medible, sin envoltorio. Antes de compilar, releer cada bullet y borrar toda palabra que no aporte dato.
+- **2026-09-02** — **Escapar los caracteres especiales de Typst en el CONTENIDO.** En el body de Typst: `@` inicia una referencia (**rompe el compile** — caso real: `@arielmirra`), `~` es espacio duro (mete espacios raros — caso real: `~8` renderizó como ` 8`), `$` abre modo matemático, `#` inicia código, y `_`/`*` son énfasis. En todo texto que venga del perfil (handles tipo `medium.com/@user`, rangos tipo `~8`, sueldos con `$`, hashtags con `#`), escapar con `\` (`\@`, `\~`, `\$`, `\#`, `\_`, `\*`) o reformular (ej. `8+ years` en vez de `~8 years`). Chequear especialmente emails/handles/URLs y cualquier símbolo antes de compilar.
 
 ## Self-Update
 

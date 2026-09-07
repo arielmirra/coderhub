@@ -6,10 +6,12 @@ Guía para dejar el tooling andando en tu compu. Toma 5 minutos, se hace una sol
 
 ## 1. Requisitos
 
-- **Claude Code** — la CLI oficial de Anthropic. Bajala de [claude.com/claude-code](https://claude.com/claude-code) e instalala.
+- **Claude Code** — la CLI oficial de Anthropic. Bajala de [claude.com/claude-code](https://claude.com/claude-code) e instalala. **Ojo: es Claude Code, no la app de escritorio de Claude** — los plugins solo corren en Claude Code.
+  - **En Windows:** instalá también [Git for Windows](https://git-scm.com/download/win) (Claude Code usa Git Bash para correr los comandos) — o usá [WSL](https://learn.microsoft.com/windows/wsl/install). Con cualquiera de las dos, todo funciona igual que en Mac, y tu perfil queda en `C:\Users\TuUsuario\.coderhub`.
 - **typst** (solo para el CV) — el compilador que arma tu CV en PDF.
   - Mac: `brew install typst`
-  - Windows / Linux: ver [typst.app](https://github.com/typst/typst?tab=readme-ov-file#installation)
+  - Windows: `winget install Typst.Typst` (o `scoop install typst`)
+  - Linux: ver [typst.app](https://github.com/typst/typst?tab=readme-ov-file#installation)
   - Si no lo instalás, todo lo demás funciona igual — solo `cv-builder` te va a pedir que lo instales cuando lo uses.
 
 MCPs opcionales (mejoran algunas skills, no son obligatorios): Apify o browser MCP para leer tu LinkedIn/feed sin copiar-pegar, Gmail MCP para mandar mails directo. Sin ellos las skills siguen andando — algunos pasos los hacés a mano.
