@@ -1,6 +1,6 @@
 ---
 name: cv-builder
-description: Genera el CV en PDF del alumno de CoderHub a partir de su perfil (~/.coderhub/profile.md), usando el template Typst silver-dev-cv. Opcionalmente lo tailorea a una oferta específica reordenando stack, logros y proyectos para maximizar el match — sin inventar nada. Reemplaza el flujo viejo de clonar un template Typst y editarlo a mano. Triggers on "armame el CV", "generá mi CV", "hacé mi currículum", "CV para esta oferta", "adaptá mi CV a este puesto", "/cv-builder", "necesito un CV en PDF". Lee el perfil que arma coderhub-setup; si no existe, deriva a /coderhub:coderhub-setup. Requiere typst instalado (brew install typst). NO inventa experiencia — el perfil es la única fuente de verdad.
+description: Genera el CV base en PDF del alumno de CoderHub a partir de su perfil (~/.coderhub/profile.md), usando el template Typst silver-dev-cv. Opcionalmente lo tailorea ligero a una oferta al momento de crearlo — sin inventar nada. Reemplaza el flujo viejo de clonar un template Typst y editarlo a mano. Triggers on "armame el CV", "generá mi CV", "hacé mi currículum", "creá mi CV base", "/cv-builder", "necesito un CV en PDF". Lee el perfil que arma coderhub-setup; si no existe, deriva a /coderhub:coderhub-setup. Requiere typst instalado (brew install typst). NO inventa experiencia — el perfil es la única fuente de verdad. Para adaptar un CV YA validado a una oferta específica (exagerando el fit, reordenando todo hacia la JD), usá `cv-tailor`, no esta skill.
 ---
 
 # CV Builder

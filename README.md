@@ -34,7 +34,8 @@ Después del setup, hablale en lenguaje natural — Claude elige la skill:
 | Aparecer en búsquedas de recruiters | *"optimizá mi LinkedIn"* | `coderhub:linkedin-profile-optimizer` |
 | Aplicar a ofertas de tu feed | *"buscá ofertas en mi feed y aplicá"* | `coderhub:linkedin-feed-job-hunter` |
 | Prepararte para una entrevista | *"preparame para esta entrevista"* (+ pegás la oferta) | `coderhub:interview-prep` |
-| Armar tu CV en PDF | *"armame el CV"* (o adaptado a una oferta) | `coderhub:cv-builder` |
+| Armar tu CV base en PDF | *"armame el CV"* | `coderhub:cv-builder` |
+| Adaptar tu CV a una oferta puntual | *"ajustá mi CV a esta oferta"* (+ pegás la JD) | `coderhub:cv-tailor` |
 
 Cada skill respeta tu **modo confidencialidad** (si estás trabajando, tu empresa actual no se entera) y **siempre confirmás antes de que salga algo**.
 

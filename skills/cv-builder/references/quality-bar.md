@@ -192,3 +192,5 @@ Destilado de 3 CV reviews de Cami (Leandro Furyk 2026-04-27, Gastón Cipolla 202
 - [ ] ¿Sin filler / AI-slop / "disponibilidad inmediata"?
 - [ ] ¿Cero invento — todo defendible en la técnica?
 - [ ] Si hay JD: ¿keywords de la JD reforzadas en bullets + header?
+- [ ] **¿TODAS las fechas exactas (mes + año, `MM/YYYY`)?** Experiencia Y educación. Nada de años sueltos ("2019") ni rangos vagos. `Present` solo con fecha de inicio.
+- [ ] **Render Typst OK:** una sola página; títulos de `#oneline-title-item` SIN `:` final (el template lo agrega — si no, sale `Backend::`); caracteres `@ ~ $ #` escapados en el contenido.
