@@ -40,7 +40,11 @@ Largo objetivo: **1 página** (máximo 2 si tenés 5+ años). Bullets cortos, wh
 
 ## 3. Perfil / Summary — la fórmula
 
-Párrafo de 3-4 líneas: `[Seniority + rol] + [X+ años] + [dominios/escala de impacto] + [stack core] + [diferenciador, muchas veces AI-native] + [nota de inglés]`. El título del summary vende el **rol objetivo específico**, no "todo lo que sé".
+Párrafo de 3-4 líneas: `[Seniority + rol] + [X+ años] + [dominios/escala de impacto] + [stack core] + [diferenciador, muchas veces AI-native]`. El título del summary vende el **rol objetivo específico**, no "todo lo que sé".
+
+**El nivel de inglés NO va en el perfil/summary** (corrección de Cami, review Mauricio 2026-09-16): es redundante porque ya está en la sección `Languages` (§2). Va ahí y solo ahí — en el summary ocupa lugar sin sumar. (Nota: los ejemplos de abajo son legacy y cierran con "Fluent in English"; con esta corrección esa parte se omite.)
+
+**"Experiencia en X" ≠ "expertise en X":** "experiencia" comunica amplitud (tocaste muchas áreas); "expertise" comunica especialización profunda. Usá **"expertise en"** solo para la tecnología/área donde la persona realmente se destaca — no lo apliques parejo a todo, o pierde fuerza.
 
 Ejemplos del nivel:
 - *"Senior Software Engineer with 8+ years building high-performance, scalable backend systems... AI-native developer who actively uses LLM tools (Claude, Cursor, GitHub Copilot)... Proven track record leading complex migrations... Fluent in English."*
@@ -81,6 +85,12 @@ Verbos: Lideré, Desarrollé, Implementé, Optimicé, Diseñé, Coordiné, Autom
 **Estimar números con criterio:** si sabés que hubo impacto pero nadie lo midió, estimá un rango defendible ("reduje ~30% los tiempos") — válido si lo podés defender en la técnica. No inflar: 25-35% suena real; 80%+ suena a chamuyo. Elegí el valor del medio, no el más optimista.
 
 **100% de compliance/accuracy como logro** (roles operacionales/regulados): "achieving 100% compliance with documentation and regulatory procedures" es un resultado medible, no una obviedad. Aplica donde el éxito es la ausencia de error.
+
+**Concisión y recorte (feedback Cami, review Mauricio 2026-09-16):** *"Conciso, preciso."*
+- **Cap de bullets:** máximo **4-5 en el rol principal/más reciente**, máximo **3 en roles anteriores**. Si sobran, hay relleno.
+- Cada bullet cabe en **máximo 2 líneas**. Si necesitás 3, casi seguro metiste contexto de negocio o intención — cortá.
+- **No expliques el dominio/negocio** (qué era la plataforma, que si es un supermercado, etc.). *"A la persona que lo lea no le va a importar si es un supermercado o lo que sea."* Solo verbo + tech + resultado.
+- **Herramienta específica, nunca categoría genérica:** `"incorporé {nombre de la IA} para…"`, NO `"incorporé herramientas de inteligencia artificial"`. La categoría genérica no diferencia ni matchea keywords.
 
 ---
 
@@ -130,7 +140,8 @@ Ante "¿pongo esta tech que apenas conozco?": en general **sí**, sabiendo que l
 ## 11. Anti-slop (tells de IA / relleno a evitar)
 
 El impacto lo dan los números, no los adjetivos. Los recruiters detectan "AI slop" al instante.
-- **Prohibido:** `spearheaded`, `leveraged`, `cutting-edge`, `transformative`, `impactful outcomes`, `drove cross-functional collaboration`, `at scale`, `proven track record`, `deep expertise`, `measurably`, `single-handedly`, `end-to-end`, `world-class`, `results-driven`, y `robust`/`seamless`/`scalable` como adjetivos sueltos.
+- **Prohibido:** `spearheaded`, `leveraged`, `cutting-edge`, `transformative`, `impactful outcomes`, `drove cross-functional collaboration`, `at scale`, `proven track record`, `deep expertise`, `measurably`, `single-handedly`, `end-to-end`, `world-class`, `results-driven`, `passionate about` / "apasionado por" / "pasión por", y `robust`/`seamless`/`scalable` como adjetivos sueltos.
+- **Slogans genéricos copy-pasteados a todo ingeniero** ("construcción de software escalable y mantenible", "comprensión de sistemas complejos"): es el relleno que la IA le pega a todos los perfiles. Reemplazar por algo que diferencie específicamente a la persona, o borrar.
 - **Inglés desproporcionado al perfil:** vocabulario tipo MBA de Harvard cuando el resto del perfil es neutro → inconsistencia que se nota.
 - **Métricas infladas o demasiado precisas** ("optimicé 87.4% reduciendo \$2.3M") en cada bullet → se lee inventado.
 - **Tecnologías que no encajan** con tu trayectoria (metidas por la JD) → entrevista que no vas a poder defender.
@@ -151,7 +162,8 @@ El impacto lo dan los números, no los adjetivos. Los recruiters detectan "AI sl
 - Mezclar idiomas ("Experiencia laboral" con "Hard skills") → elegí uno. Internacional → inglés completo.
 - Tercera persona / tono informal.
 - Logros genéricos ("mejoré procesos") sin cuantificar.
-- Secciones de relleno: "Información Adicional/Personal" (dirección, estado civil, DNI — para remoto no aportan), hobbies (salvo relación directa, 1 línea), cursos viejos/irrelevantes, "Referencias a pedido" (redundante).
+- Secciones de relleno: "Información Adicional/Personal" (dirección, estado civil, DNI — para remoto no aportan), hobbies (salvo relación directa, 1 línea), cursos viejos/irrelevantes, "Referencias a pedido" (redundante). Lo indispensable (ej. permiso de trabajo) sube al **header**, no queda como sección aparte.
+- **Repetir la ubicación** en más de un lugar (si ya está en el header, no la repitas en el cuerpo).
 - **"Disponibilidad inmediata" / "Available to start immediately":** SACAR — comunica desesperación y **debilita la negociación salarial** (la empresa sabe que no tenés otras opciones). Si preguntan, respondés tranquilo "en 2-3 semanas". El CV muestra valor, no urgencia.
 
 ---
@@ -165,7 +177,7 @@ El impacto lo dan los números, no los adjetivos. Los recruiters detectan "AI sl
 
 ## 14. Feedback de Cami (correcciones recurrentes en CV reviews reales)
 
-Destilado de 3 CV reviews de Cami (Leandro Furyk 2026-04-27, Gastón Cipolla 2026-09-03, Juanga Ricci 2026-08-31):
+Destilado de 4 CV reviews de Cami (Leandro Furyk 2026-04-27, Gastón Cipolla 2026-09-03, Juanga Ricci 2026-08-31, Mauricio Bazagoitia 2026-09-16):
 
 - **Bullets como resultado, no como objetivo** — la corrección que repitió en las 3 (ver §5). *"No lo redactes como 'hice esto para reducir esto', sino 'hice esto que redujo esto'."*
 - **Título/headline al nivel target, no al "seguro"** — poner un nivel más bajo por miedo te **auto-filtra a franjas salariales más bajas**. *"No quiero que te filtren de ninguna manera."* Usá el nombre de rol que usan las JDs de tu mercado target (investigá: ej. "Tech Lead" vs "Staff").
@@ -189,7 +201,10 @@ Destilado de 3 CV reviews de Cami (Leandro Furyk 2026-04-27, Gastón Cipolla 202
 - [ ] ¿Coherencia summary ↔ bullets ↔ skills para el rol objetivo?
 - [ ] ¿Proyectos con link directo? ¿O Certifications si no hay proyectos? (sin rellenar)
 - [ ] ¿1-1.5 páginas, primer tercio con lo más relevante?
-- [ ] ¿Sin filler / AI-slop / "disponibilidad inmediata"?
+- [ ] ¿Sin filler / AI-slop / "disponibilidad inmediata" / "passionate about" / slogans genéricos copy-pasteados?
+- [ ] ¿Cada bullet en ≤2 líneas, sin explicar el dominio/negocio ni la intención? ¿Herramienta específica (no "herramientas de IA")?
+- [ ] ¿Cap de bullets respetado (4-5 rol principal, 3 anteriores)?
+- [ ] ¿El nivel de inglés SOLO en la sección `Languages`, no en el perfil? ¿Ubicación sin repetir (solo en el header)?
 - [ ] ¿Cero invento — todo defendible en la técnica?
 - [ ] Si hay JD: ¿keywords de la JD reforzadas en bullets + header?
 - [ ] **¿TODAS las fechas exactas (mes + año, `MM/YYYY`)?** Experiencia Y educación. Nada de años sueltos ("2019") ni rangos vagos. `Present` solo con fecha de inicio.
