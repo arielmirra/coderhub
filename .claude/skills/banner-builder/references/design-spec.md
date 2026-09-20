@@ -61,6 +61,31 @@ Jerarquía, de arriba a abajo:
 - Stack de 15 tecnologías (satura); curar a 6-9.
 - Sansserif + mono mal contrastados o fuentes que no existen en la máquina → verificar que compile.
 
+## 7. Los 3 estilos (generar SIEMPRE los 3 y que el cliente elija)
+
+Cuando alguien pide un banner, **generar 3 variantes** para que elija — nunca una sola. Implementaciones de referencia en `references/styles/*.typ` (parametrizar nombre/eyebrow/tagline/logos):
+
+- **`minimalista`** — fondo oscuro (`#0B1220`), mucho aire, nombre en peso liviano (weight 300), hairline azul de acento bajo el nombre, logos chicos monocromos centrados. Elegante, sobrio.
+- **`glassmorphism`** — fondo con gradiente + 2 blobs translúcidos de profundidad, y una **glass card** central (rounded, `fill: rgb(255,255,255,20)`, borde `rgb(255,255,255,55)`) con el contenido + logos adentro. Moderno, con "wow". Suele ser el ganador.
+- **`neobrutalism`** — fondo claro (`#EDE7D9`), negro alto contraste, eyebrow en bloque accent con borde negro grueso (3pt), nombre weight 900, logos en **tiles bordeados** (borde negro 2.5pt), barra accent dura abajo. Audaz.
+
+Los 3 respetan las mismas dimensiones (§1), safe zones (§2) y contenido (§4). Composición **centrada** (validado — deja el nombre en la franja media/centro, fuera de la foto y del crop mobile).
+
+## 8. Logos de tecnologías
+
+Los logos elevan el banner (el cliente los pidió). Se bajan de **Simple Icons** (SVG monocromo, tinteable) y typst los embebe (`image("logos/x.svg")`):
+
+```bash
+# tinteado al color que necesites (hex sin #): claro para fondo oscuro, oscuro para neobrutalism
+curl -s "https://cdn.simpleicons.org/{slug}/E8EEF6" -o logos/{name}.svg   # o via node fetch
+```
+
+- Slugs: `scala`, `kotlin`, `openjdk` (Java), `go`, `kubernetes`, `docker`, `anthropic` (Claude), `python`, `typescript`, etc.
+- **Ojo:** algunos slugs de marca fueron removidos de Simple Icons (ej. **AWS** ya no está). Si un logo no baja, omitirlo del row (no romper) o buscar alternativa en devicon.
+- Tinte: fondo oscuro → logos claros (`E8EEF6`); neobrutalism (fondo claro) → logos oscuros (`151515`).
+- **Fallback sin red:** si no se pueden bajar, usar chips de texto en mono (como la v1) — no bloquear.
+- Curar **6-9 logos** del stack real (design-spec §4), no 15.
+
 ## Checklist
 
 - [ ] ¿Dimensión y ratio correctos por destino (LinkedIn 1584×396, GitHub 1280×320), exportado 2×?

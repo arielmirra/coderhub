@@ -14,8 +14,9 @@ Genera los banners de perfil del cliente — **LinkedIn** (el prioritario) y **G
 
 ## Outcome
 
-- **Banner de LinkedIn** en `trabajo/linkedin/{YYYY-MM-DD}_banner-linkedin.png` (1584×396, exportado 2× para nitidez).
-- **Banner de GitHub** en `trabajo/github/assets/banner.png` (1280×320) + el snippet markdown para embeberlo arriba del README.
+- **3 variantes de estilo** del banner (minimalista · glassmorphism · neobrutalism) para que el cliente elija — nunca una sola. Con **logos de las tecnologías** reales.
+- **Banner de LinkedIn** (1584×396, exportado 2×) en `trabajo/linkedin/{YYYY-MM-DD}_banner-{estilo}.png`.
+- **Banner de GitHub** (1280×320) en `trabajo/github/assets/banner.png` (una vez elegido el estilo) + snippet markdown para embeberlo.
 - Instrucciones para subir cada uno (LinkedIn: editar portada; GitHub: commitear el asset).
 - Coherente con el CV, el LinkedIn y el README del cliente (mismo posicionamiento).
 
@@ -42,24 +43,38 @@ De `profile.md`, armar los 4 bloques (design-spec §4):
 
 Confirmar el contenido con el cliente antes de renderizar (es su marca).
 
-## Step 3 — Renderizar el banner de LinkedIn (prioritario)
+## Step 3 — Bajar los logos del stack
 
-1. Copiar `.claude/skills/banner-builder/references/banner-template.typ` a `trabajo/linkedin/{slug}-banner.typ` y reemplazar los placeholders (`//{{EYEBROW}}`, `//{{NAME}}`, `//{{TAGLINE}}`, `//{{STACK}}`). Dejar `W=1584pt H=396pt`.
-2. **Escapar los caracteres typst** en el contenido (`@ ~ $ # _ *` → con `\`). Ej: `\@ SALESFORCE`.
-3. Compilar a 2×:
-   ```bash
-   typst compile trabajo/linkedin/{slug}-banner.typ trabajo/linkedin/{YYYY-MM-DD}_banner-linkedin.png --ppi 144
-   ```
-4. **Verificar el render:** que el PNG mida 3168×792, que ningún texto quede en la esquina inferior-izquierda (safe zone de la foto) ni pegado a los bordes (crop mobile). Si algo se sale, ajustar tamaños/spacing y recompilar. Si el compile falla por fuente, revisar los fallbacks del template.
+Bajar los logos de las 6-9 tecnologías del stack (design-spec §8) a `trabajo/logos/`, tinteados según el estilo (claro `E8EEF6` para minimalista/glass; oscuro `151515` para neobrutalism):
 
-## Step 4 — Renderizar el banner de GitHub
+```bash
+mkdir -p trabajo/logos
+for pair in "scala:scala" "kotlin:kotlin" "java:openjdk" "go:go" "kubernetes:kubernetes" "docker:docker" "anthropic:anthropic"; do
+  name="${pair%%:*}"; slug="${pair##*:}"
+  curl -s "https://cdn.simpleicons.org/$slug/E8EEF6" -o "trabajo/logos/$name.svg"
+done
+```
 
-1. Copiar el mismo `.typ`, cambiar `W=1280pt H=320pt` (y bajar el nombre a ~60pt si hace falta que entre).
-2. Compilar a `trabajo/github/assets/banner.png` con `--ppi 144` (→ 2560×640).
-3. Dar el snippet para el README:
-   ```markdown
-   <p align="center"><img src="./assets/banner.png" alt="{Nombre} — {rol}" width="100%"/></p>
-   ```
+Verificar que cada archivo empiece con `<svg` (algunos slugs fueron removidos — ej. AWS; omitir el que falle, no romper). **Sin red:** caer a chips de texto en mono.
+
+## Step 4 — Generar las 3 variantes de LinkedIn (prioritario)
+
+Para cada estilo (`minimalista`, `glassmorphism`, `neobrutalism`), tomar `.claude/skills/banner-builder/references/styles/{estilo}.typ` como base, parametrizar el contenido (eyebrow/nombre/tagline/logos) y compilar a 2×:
+
+```bash
+typst compile trabajo/linkedin/{estilo}.typ trabajo/linkedin/{YYYY-MM-DD}_banner-{estilo}.png --ppi 144
+```
+
+- **Escapar** los caracteres typst en el contenido (`@ ~ $ # _ *` → `\`). Ej: `\@ SALESFORCE`.
+- **Verificar cada PNG:** mide 3168×792, composición **centrada** (nada crítico en la esquina inferior-izquierda ni pegado a los bordes — §2). Idealmente **abrir el PNG y mirarlo** antes de entregar.
+- **Mostrar las 3 al cliente y que elija** una para deployar (podés mostrarlas inline si el entorno renderiza imágenes, o dar las rutas).
+
+## Step 5b — Banner de GitHub (con el estilo elegido)
+
+Una vez elegido el estilo, recompilar ESE con `W=1280pt H=320pt` (bajar el nombre a ~58pt para que entre) a `trabajo/github/assets/banner.png` (`--ppi 144` → 2560×640), y dar el snippet:
+```markdown
+<p align="center"><img src="./assets/banner.png" alt="{Nombre} — {rol}" width="100%"/></p>
+```
 
 ## Step 5 — Entregar + deploy
 
