@@ -25,7 +25,7 @@ Tenés un set de skills en `.claude/skills/`. **Vos sos responsable de elegir la
 | Mejorar / rehacer su **CV** | `cv-builder` |
 | Adaptar el CV a una **búsqueda/JD puntual** | `cv-tailor` |
 | Optimizar su **perfil de LinkedIn** | `linkedin-profile-optimizer` |
-| Encontrar y aplicar a **ofertas** desde el feed de LinkedIn | `linkedin-feed-job-hunter` |
+| Mejorar / rehacer su **README de perfil de GitHub** | `github-readme-builder` |
 | Prepararse para una **entrevista** | `interview-prep` |
 
 **Importante (Claude Code vs OpenCode):** en Claude Code las skills se disparan solas por contexto. En OpenCode **no** — así que cuando detectes la intención, **invocá la skill vos mismo** (cargala y seguí sus instrucciones al pie). Si dudás entre dos, preguntá una sola cosa corta y seguí. Nunca dejes a la persona esperando ni le pidas que "invoque una skill" — de eso te encargás vos.
