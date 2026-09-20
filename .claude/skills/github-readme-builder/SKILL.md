@@ -43,9 +43,9 @@ gh api "users/{usuario}/repos?sort=pushed&per_page=100" --jq 'sort_by(-.stargaze
 
 Si el cliente **no tiene proyectos públicos fuertes**, no forzar la sección: apoyarse más en value prop + experiencia + (si escribe) un feed de blog.
 
-## Step 3 — Detectar idioma + arquetipo
+## Step 3 — Idioma + arquetipo
 
-- **Idioma:** según el rol target del profile (US/Global → inglés; LATAM hispano → español; mixto → inglés, que es el default de GitHub). No mezclar.
+- **Idioma: SIEMPRE inglés.** Regla dura de CoderHub — el profile README es una superficie **global y profesional** (recruiters internacionales, roles remotos en dólares). Va en inglés aunque el cliente apunte solo a LATAM. No mezclar idiomas.
 - **Arquetipo (quality-bar §7):** por default **Descriptive + Projects curados + Badges seleccionados** (+ toque Minimalistic). Evitar "A Little Bit of Everything". Solo sumar un **auto-feed** (blog/releases) si el cliente tiene contenido real que mostrar (§6).
 
 ## Step 4 — Escribir el README (por bloques)
@@ -89,6 +89,7 @@ Antes de entregar, pasá el texto por el filtro anti-slop (quality-bar §8, igua
 - **2026-09-20** — **Señal, no decoración.** Fuera visitor counters, typing SVG, snake, trophy, spotify, memes, gifs de bienvenida, fancy fonts. Stack = 4-6 badges reales, no 20. Si un widget solo se explica como "es lindo", va afuera.
 - **2026-09-20** — **Coherencia con CV + LinkedIn.** Mismo rol target, mismos logros con números, mismo stack priorizado.
 - **2026-09-20** — **Anti-slop.** Cero "passionate about" / "always learning" / slogans genéricos.
+- **2026-09-20** — **Siempre en inglés.** El profile README va en inglés sí o sí (superficie global/profesional, roles remotos en dólares), aunque el cliente apunte solo a LATAM. Regla de Ariel.
 
 ## Self-Update
 

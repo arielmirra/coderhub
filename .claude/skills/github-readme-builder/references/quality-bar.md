@@ -137,6 +137,7 @@ De los ~16 que cataloga la comunidad, para un dev buscando trabajo la combinaci�
 - [ ] ¿Connect compacto (LinkedIn, portfolio, email, CV)?
 - [ ] ¿Cero widgets de decoración (visitor counter, typing, snake, trophy, spotify, memes)?
 - [ ] ¿Personalidad (si va) en `<details>`, sin ensuciar?
+- [ ] ¿**En inglés**? (regla dura — el profile README va en inglés aunque el target sea LATAM)
 - [ ] ¿Coherente con el CV y el LinkedIn (mismo rol target, mismos logros)?
 - [ ] ¿Sin AI-slop / "passionate about" / slogans genéricos?
 - [ ] ¿README que no envejece rápido (o auto-feed si hay contenido real que mostrar)?
