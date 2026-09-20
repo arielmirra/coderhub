@@ -27,7 +27,7 @@ El repo se creó desde un template (sin link upstream de git), así que traemos 
 
 1. **Verificá el remote del template.** Si no existe el remote `coderhub`, agregalo:
    ```bash
-   git remote get-url coderhub 2>/dev/null || git remote add coderhub https://github.com/coderhub/coderhub-client-template.git
+   git remote get-url coderhub 2>/dev/null || git remote add coderhub https://github.com/arielmirra/coderhub.git
    ```
    (El provisioning ya deja seteado este remote al crear el repo; el comando de arriba lo agrega si faltara.)
 
@@ -62,5 +62,5 @@ El repo se creó desde un template (sin link upstream de git), así que traemos 
 
 ## Troubleshooting
 
-- **`fetch` falla por auth:** el template es privado; la persona tiene que estar logueada en git/gh con una cuenta que tenga acceso. Avisar que corra `gh auth login` o configure credenciales.
+- **`fetch` falla por auth:** el template (`arielmirra/coderhub`) es **público**, así que normalmente no necesita auth. Si aun así falla, es un tema de red o de credenciales de git — avisar que verifique conexión o corra `gh auth login`.
 - **`git checkout` dice "pathspec did not match":** el template todavía no tiene esa carpeta o cambió de nombre — avisar, no forzar.
