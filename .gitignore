@@ -1,0 +1,39 @@
+# Secretos — NUNCA commitear. Si algún día cableás un MCP/API, la key va acá.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.secret
+.mcp.json
+!.mcp.json.example
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (por si una skill usa tooling JS)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Python (por si una skill usa scripts)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Logs / temporales
+*.log
+.cache/
+tmp/
+
+# NOTA: archivos-generados/ SÍ se versiona — es tu trabajo (perfil, CVs, banners).
+# No lo agregues acá.
