@@ -1,34 +1,34 @@
 ---
-name: banner-builder
-description: Genera banners de perfil profesionales para el cliente — el banner de LinkedIn (1584×396) y el banner del README de GitHub (1280×320) — a partir de perfil/profile.md, con estética técnica on-brand (fondo oscuro, nombre + rol + stack real incluida AI). Usa typst para renderizar PNG a dimensiones exactas (texto perfecto, no IA de imágenes). Respeta las safe zones de LinkedIn (foto de perfil + crop mobile). Triggers on "armá mi banner", "banner de LinkedIn", "banner para el github", "portada de LinkedIn", "generá mi banner", "/banner-builder", "hacé el banner del perfil", "necesito una portada". Requiere typst instalado (la misma dependencia que cv-builder). Complementa a linkedin-profile-optimizer (que recomienda el banner) y github-readme-builder (que lo embebe).
+name: armar-banner
+description: Genera banners de perfil profesionales para el cliente — el banner de LinkedIn (1584×396) y el banner del README de GitHub (1280×320) — a partir de archivos-generados/perfil.md, con estética técnica on-brand (fondo oscuro, nombre + rol + stack real incluida AI). Usa typst para renderizar PNG a dimensiones exactas (texto perfecto, no IA de imágenes). Respeta las safe zones de LinkedIn (foto de perfil + crop mobile). Triggers on "armá mi banner", "banner de LinkedIn", "banner para el github", "portada de LinkedIn", "generá mi banner", "/armar-banner", "hacé el banner del perfil", "necesito una portada". Requiere typst instalado (la misma dependencia que armar-cv). Complementa a optimizar-linkedin (que recomienda el banner) y armar-readme-github (que lo embebe).
 ---
 
 # Banner Builder
 
-Genera los banners de perfil del cliente — **LinkedIn** (el prioritario) y **GitHub README** — con estética técnica on-brand. Renderiza con **typst** a PNG de dimensiones exactas: texto perfecto, determinístico, editable (NO IA generativa de imágenes, que arruina el texto). Tono: seguí `voz.md`.
+Genera los banners de perfil del cliente — **LinkedIn** (el prioritario) y **GitHub README** — con estética técnica on-brand. Renderiza con **typst** a PNG de dimensiones exactas: texto perfecto, determinístico, editable (NO IA generativa de imágenes, que arruina el texto). Tono: seguí la sección Voz de `AGENTS.md`.
 
 ## Pre-requisitos
 
-- `perfil/profile.md` lleno (corrió `coderhub-setup`). Si no → derivar a `coderhub-setup` y parar.
-- **`typst` instalado** (misma dependencia que `cv-builder`). Si `which typst` falla → dar el hint (`brew install typst` / `winget install Typst.Typst`) y parar.
+- `archivos-generados/perfil.md` lleno (corrió `configurar-coderhub`). Si no → derivar a `configurar-coderhub` y parar.
+- **`typst` instalado** (misma dependencia que `armar-cv`). Si `which typst` falla → dar el hint (`brew install typst` / `winget install Typst.Typst`) y parar.
 
 ## Outcome
 
 - **3 variantes de estilo** del banner (minimalista · glassmorphism · neobrutalism) para que el cliente elija — nunca una sola. Con **logos de las tecnologías** reales.
-- **Banner de LinkedIn** (1584×396, exportado 2×) en `trabajo/linkedin/{YYYY-MM-DD}_banner-{estilo}.png`.
-- **Banner de GitHub** (1280×320) en `trabajo/github/assets/banner.png` (una vez elegido el estilo) + snippet markdown para embeberlo.
+- **Banner de LinkedIn** (1584×396, exportado 2×) en `archivos-generados/linkedin/{YYYY-MM-DD}_banner-{estilo}.png`.
+- **Banner de GitHub** (1280×320) en `archivos-generados/github/assets/banner.png` (una vez elegido el estilo) + snippet markdown para embeberlo.
 - Instrucciones para subir cada uno (LinkedIn: editar portada; GitHub: commitear el asset).
 - Coherente con el CV, el LinkedIn y el README del cliente (mismo posicionamiento).
 
 ## Skill Relationships
 
-- **Upstream:** `coderhub-setup` — genera el `perfil/profile.md`.
-- **Sibling:** `linkedin-profile-optimizer` — recomienda el banner (§3); esta skill lo **produce**. `github-readme-builder` — embebe el banner de GitHub arriba del README.
+- **Upstream:** `configurar-coderhub` — genera el `archivos-generados/perfil.md`.
+- **Sibling:** `optimizar-linkedin` — recomienda el banner (§3); esta skill lo **produce**. `armar-readme-github` — embebe el banner de GitHub arriba del README.
 
 ## Step 1 — Leer profile + design spec
 
-1. Leer `perfil/profile.md`: nombre, rol + seniority + empresa (para el eyebrow), stack real (principal + AI), diferenciador (para la tagline), rol target.
-2. **Leer `.claude/skills/banner-builder/references/design-spec.md`** — dimensiones exactas, **safe zones de LinkedIn** (crítico), estética, contenido, anti-patterns. Es el nivel a igualar.
+1. Leer `archivos-generados/perfil.md`: nombre, rol + seniority + empresa (para el eyebrow), stack real (principal + AI), diferenciador (para la tagline), rol target.
+2. **Leer `.claude/skills/armar-banner/references/design-spec.md`** — dimensiones exactas, **safe zones de LinkedIn** (crítico), estética, contenido, anti-patterns. Es el nivel a igualar.
 3. Chequear `typst` (`which typst`); si falta, hint + parar.
 
 ## Step 2 — Definir el contenido
@@ -45,13 +45,13 @@ Confirmar el contenido con el cliente antes de renderizar (es su marca).
 
 ## Step 3 — Bajar los logos del stack
 
-Bajar los logos de las 6-9 tecnologías del stack (design-spec §8) a `trabajo/logos/`, tinteados según el estilo (claro `E8EEF6` para minimalista/glass; oscuro `151515` para neobrutalism):
+Bajar los logos de las 6-9 tecnologías del stack (design-spec §8) a `archivos-generados/logos/`, tinteados según el estilo (claro `E8EEF6` para minimalista/glass; oscuro `151515` para neobrutalism):
 
 ```bash
-mkdir -p trabajo/logos
+mkdir -p archivos-generados/logos
 for pair in "scala:scala" "kotlin:kotlin" "java:openjdk" "go:go" "kubernetes:kubernetes" "docker:docker" "anthropic:anthropic"; do
   name="${pair%%:*}"; slug="${pair##*:}"
-  curl -s "https://cdn.simpleicons.org/$slug/E8EEF6" -o "trabajo/logos/$name.svg"
+  curl -s "https://cdn.simpleicons.org/$slug/E8EEF6" -o "archivos-generados/logos/$name.svg"
 done
 ```
 
@@ -59,10 +59,10 @@ Verificar que cada archivo empiece con `<svg` (algunos slugs fueron removidos �
 
 ## Step 4 — Generar las 3 variantes de LinkedIn (prioritario)
 
-Para cada estilo (`minimalista`, `glassmorphism`, `neobrutalism`), tomar `.claude/skills/banner-builder/references/styles/{estilo}.typ` como base, parametrizar el contenido (eyebrow/nombre/tagline/logos) y compilar a 2×:
+Para cada estilo (`minimalista`, `glassmorphism`, `neobrutalism`), tomar `.claude/skills/armar-banner/references/styles/{estilo}.typ` como base, parametrizar el contenido (eyebrow/nombre/tagline/logos) y compilar a 2×:
 
 ```bash
-typst compile trabajo/linkedin/{estilo}.typ trabajo/linkedin/{YYYY-MM-DD}_banner-{estilo}.png --ppi 144
+typst compile archivos-generados/linkedin/{estilo}.typ archivos-generados/linkedin/{YYYY-MM-DD}_banner-{estilo}.png --ppi 144
 ```
 
 - **Escapar** los caracteres typst en el contenido (`@ ~ $ # _ *` → `\`). Ej: `\@ SALESFORCE`.
@@ -71,7 +71,7 @@ typst compile trabajo/linkedin/{estilo}.typ trabajo/linkedin/{YYYY-MM-DD}_banner
 
 ## Step 5b — Banner de GitHub (con el estilo elegido)
 
-Una vez elegido el estilo, recompilar ESE con `W=1280pt H=320pt` (bajar el nombre a ~58pt para que entre) a `trabajo/github/assets/banner.png` (`--ppi 144` → 2560×640), y dar el snippet:
+Una vez elegido el estilo, recompilar ESE con `W=1280pt H=320pt` (bajar el nombre a ~58pt para que entre) a `archivos-generados/github/assets/banner.png` (`--ppi 144` → 2560×640), y dar el snippet:
 ```markdown
 <p align="center"><img src="./assets/banner.png" alt="{Nombre} — {rol}" width="100%"/></p>
 ```
@@ -100,7 +100,7 @@ Si el cliente flagea un problema (texto en zona recortada, fuente que no compil�
 
 ## Troubleshooting
 
-- **`typst: command not found`** — instalarlo (igual que cv-builder). Mac: `brew install typst`.
+- **`typst: command not found`** — instalarlo (igual que armar-cv). Mac: `brew install typst`.
 - **Fuente faltante / banner con tofu (□)** — la máquina no tiene la fuente; el template ya trae fallbacks (`Helvetica Neue`/`Arial`, `Menlo`/`DejaVu Sans Mono`). Si aún falla, usar una fuente que `typst fonts` liste.
 - **El texto se pisa con la foto en LinkedIn** — subir el bloque a la franja media / achicar el stack; recompilar y previsualizar.
 - **El compile falla** — casi siempre un `@`/`#`/`$`/`_` sin escapar en el contenido. Escapar con `\` y reintentar.

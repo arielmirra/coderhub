@@ -1,17 +1,17 @@
 ---
-name: interview-prep
-description: Prepara al cliente para una entrevista específica en minutos. Lee perfil/profile.md (datos del cliente) + un job posting que el cliente pega o linkea, y arma un coaching estructurado con roadmap de repaso, Q&A probables, match perfil↔rol, y tips. Tiene 3 modos de output: default (1h, completo), fast (15m, una oración por tema), y override (lo que el cliente pida — "solo conceptos de ciberseguridad", "system design en 5 min", etc). Respeta modo stealth + bloqueos diagnosticados + anti-distracciones del profile. Triggers on "preparame para esta entrevista", "interview prep", "/interview-prep", "tengo entrevista en X", "repasame Y antes de la entrevista", "/trainme". Inspirado en el CLI trainme de Braian Troncoso (mentee de CoderHub) — link en el README.
+name: preparar-entrevista
+description: Prepara al cliente para una entrevista específica en minutos. Lee archivos-generados/perfil.md (datos del cliente) + un job posting que el cliente pega o linkea, y arma un coaching estructurado con roadmap de repaso, Q&A probables, match perfil↔rol, y tips. Tiene 3 modos de output: default (1h, completo), fast (15m, una oración por tema), y override (lo que el cliente pida — "solo conceptos de ciberseguridad", "system design en 5 min", etc). Respeta modo stealth + bloqueos diagnosticados + anti-distracciones del profile. Triggers on "preparame para esta entrevista", "interview prep", "/preparar-entrevista", "tengo entrevista en X", "repasame Y antes de la entrevista", "/trainme". Inspirado en el CLI trainme de Braian Troncoso (mentee de CoderHub) — link en el README.
 ---
 
 # Interview Prep
 
-Coaching pre-entrevista en minutos. **No es para profundizar — es para refrescar.** Tono: seguí `voz.md`.
+Coaching pre-entrevista en minutos. **No es para profundizar — es para refrescar.** Tono: seguí la sección Voz de `AGENTS.md`.
 
 ## Pre-requisitos
 
-- `perfil/profile.md` lleno (corrió `coderhub-setup`).
+- `archivos-generados/perfil.md` lleno (corrió `configurar-coderhub`).
 - Un **job posting** (texto pegado, URL, o archivo).
-- Si falta el profile → derivar a `coderhub-setup` y parar.
+- Si falta el profile → derivar a `configurar-coderhub` y parar.
 
 ## Outcome
 
@@ -21,13 +21,13 @@ Un bloque de coaching estructurado adaptado al modo elegido:
 - **fast (~15m):** Una oración por tema principal — el mínimo para refrescar antes de entrar
 - **override:** lo que el cliente pidió textual ("solo conceptos de ciberseguridad", "preguntas conductuales en español", "system design para principiantes")
 
-El bloque se guarda en `trabajo/entrevistas/` (ver Step 6).
+El bloque se guarda en `archivos-generados/entrevistas/` (ver Step 6).
 
 ---
 
 ## Step 1 — Leer profile + parsear job posting
 
-1. Leer `perfil/profile.md`. Extraer:
+1. Leer `archivos-generados/perfil.md`. Extraer:
    - Stack técnico (principal + secundario + diferenciadores)
    - Logros con números
    - Rol target + banda salarial
@@ -54,7 +54,7 @@ El bloque se guarda en `trabajo/entrevistas/` (ver Step 6).
 
 | Trigger del cliente | Modo |
 |---|---|
-| "/interview-prep" sin más → preguntar | default |
+| "/preparar-entrevista" sin más → preguntar | default |
 | "fast", "rápido", "15 minutos", "estoy entrando ya" | **fast** |
 | "solo X", "concentrate en Y", "repasame Z específico" | **override** |
 | Default si no aclaró | preguntar antes de generar |
@@ -102,7 +102,7 @@ Si el profile tiene bloqueos identificados por CoderHub, el coach los aborda pre
 
 ## Step 4 — Generar el bloque según modo
 
-Ver `.claude/skills/interview-prep/references/coach-template.md` para los templates exactos.
+Ver `.claude/skills/preparar-entrevista/references/coach-template.md` para los templates exactos.
 
 ### Modo default (~1h)
 
@@ -177,14 +177,14 @@ Al final del bloque, agregar:
 ✅ Listo. Si querés:
 - "más profundo en {tema X}" → te tiro detalle
 - "Q&A en inglés" → traduzco
-- "/interview-prep --review" → repaso post-entrevista (qué fue bien, qué ajustar)
+- "/preparar-entrevista --review" → repaso post-entrevista (qué fue bien, qué ajustar)
 
 Si la entrevista pasó: pegame qué pasó en 2-3 líneas y armamos retro.
 ```
 
 ## Step 6 — Guardar
 
-Guardar el bloque en `trabajo/entrevistas/{YYYY-MM-DD}_prep-{empresa-o-rol}.md` (crear `trabajo/entrevistas/` si no existe). Mostrar la ruta al cliente para que lo tenga abierto mientras repasa. Es un refresher time-sensitive, pero guardarlo sirve para el repaso post-entrevista (`--review`) y para la próxima ronda con la misma empresa.
+Guardar el bloque en `archivos-generados/entrevistas/{YYYY-MM-DD}_prep-{empresa-o-rol}.md` (crear `archivos-generados/entrevistas/` si no existe). Mostrar la ruta al cliente para que lo tenga abierto mientras repasa. Es un refresher time-sensitive, pero guardarlo sirve para el repaso post-entrevista (`--review`) y para la próxima ronda con la misma empresa.
 
 ## Reglas duras
 
@@ -206,6 +206,6 @@ Guardar el bloque en `trabajo/entrevistas/{YYYY-MM-DD}_prep-{empresa-o-rol}.md` 
 
 ## Inspiración
 
-Esta skill está inspirada en el CLI [`trainme`](https://github.com/BraianTroncoso/trainme) hecho por **Braian Troncoso**, mentee de CoderHub. Braian construyó la versión Python para uso terminal; esta skill replica la lógica para uso adentro de Claude Code / OpenCode, leyendo el `perfil/profile.md` que ya configuraste con `coderhub-setup`.
+Esta skill está inspirada en el CLI [`trainme`](https://github.com/BraianTroncoso/trainme) hecho por **Braian Troncoso**, mentee de CoderHub. Braian construyó la versión Python para uso terminal; esta skill replica la lógica para uso adentro de Claude Code / OpenCode, leyendo el `archivos-generados/perfil.md` que ya configuraste con `configurar-coderhub`.
 
 Si preferís el flujo CLI puro (terminal-first, copy-paste a Claude.ai web), revisá su repo. Las 2 herramientas conviven.

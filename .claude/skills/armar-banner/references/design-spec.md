@@ -2,7 +2,7 @@
 
 Cómo se ve un buen banner de perfil (LinkedIn + GitHub) y por qué. Se generan con **typst** (determinístico, texto perfecto, exporta PNG a dimensiones exactas) — NO con IA generativa de imágenes (destroza el texto y sale inconsistente). Mismo principio que el sistema de HTML de onboarding: controlar el output.
 
-> Coherencia: el banner refuerza el MISMO posicionamiento que el CV, el LinkedIn y el README. Ver las quality-bars de `linkedin-profile-optimizer` (§3 banner) y `github-readme-builder`.
+> Coherencia: el banner refuerza el MISMO posicionamiento que el CV, el LinkedIn y el README. Ver las quality-bars de `optimizar-linkedin` (§3 banner) y `armar-readme-github`.
 
 ---
 

@@ -1,6 +1,6 @@
 # Quality bar — el método CoderHub para un buen CV
 
-Fuente de verdad del contenido de un CV que genera `cv-builder`. Destilado de (1) las **lecciones de CV del Skool de CoderHub** (método canónico), (2) CVs reales de alumnos que quedaron muy bien, y (3) feedback de Cami (head coach). No copiar datos — copiar el **nivel, la estructura y las reglas**.
+Fuente de verdad del contenido de un CV que genera `armar-cv`. Destilado de (1) las **lecciones de CV del Skool de CoderHub** (método canónico), (2) CVs reales de alumnos que quedaron muy bien, y (3) feedback de Cami (head coach). No copiar datos — copiar el **nivel, la estructura y las reglas**.
 
 > **Nota de formato:** el template `silver-dev-cv` (Typst → PDF) ya cumple lo básico de ATS — **una sola columna, texto seleccionable, sin tablas/íconos/gráficos/imágenes, fuente simple**. Eso está resuelto por el template; este doc es sobre el **contenido**.
 
@@ -127,7 +127,7 @@ Para que se vea la persona: mostrá **cuánta gente lideraste/con cuántos traba
 - **Una versión distinta por rol objetivo** (1-2, máximo 3): Frontend vs Full Stack = dos CVs. Cambia el **summary/título**, el **orden/énfasis de bullets**, y las **primeras skills del header**. El 80% del CV es el mismo. Nombrá los archivos con claridad: `Nombre Apellido — CV — Full Stack.pdf` (no "CV final 2").
 - **Adaptar a la JD específica** (lo que casi nadie hace, 10-15 min por aplicación): leé la JD, anotá las 5-7 keywords que más se repiten, reforzalas en los bullets (de 2 → 4 apariciones), subí de visibilidad lo que la JD pide, reordená bullets, ajustá las primeras skills del header. **No** toques estructura/experiencias/formato/años/empresas. "Versión base sólida + 10 min de ajuste por aplicación."
 
-En `cv-builder` esto se mapea directo: sin JD → versión general por rol; con JD → tailoreo (reordenar + reforzar keywords, **sin inventar**).
+En `armar-cv` esto se mapea directo: sin JD → versión general por rol; con JD → tailoreo (reordenar + reforzar keywords, **sin inventar**).
 
 ---
 

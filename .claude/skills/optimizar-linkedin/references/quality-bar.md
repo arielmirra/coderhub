@@ -7,7 +7,7 @@ Fuente de verdad del contenido de un perfil de LinkedIn optimizado. Destilado de
 > - Mecánica de SEO de LinkedIn Recruiter (pesos por campo, regla de las 6 ubicaciones, densidad) → `linkedin-seo-strategy.md`
 > - Actividad diaria/semanal según stealth → `engagement-strategy.md`
 > - Settings de visibilidad / Open to Work → `.claude/skills/_shared/stealth-mode.md`
-> - Método de bullets (verbo→tech→resultado, anti-slop, protagonismo) → **se comparte con el CV**: `.claude/skills/cv-builder/references/quality-bar.md` §5, §6, §11.
+> - Método de bullets (verbo→tech→resultado, anti-slop, protagonismo) → **se comparte con el CV**: `.claude/skills/armar-cv/references/quality-bar.md` §5, §6, §11.
 
 ---
 
@@ -107,7 +107,7 @@ Concepto que Cami enseña y aplica a headline, About y Experience. Elegir mal la
 
 - **Experiencia = amplitud.** Cosas que tocaste en varias áreas. *"Tengo experiencia en Python, AWS..."*
 - **Expertise = profundidad.** Dominio meticuloso en UNA cosa. *"En Python sos experto."*
-- **Regla:** usá **"expertise en {X}"** SOLO donde la persona realmente se destaca; para el resto, "experiencia en". *"Cuando sos experto es que sos meticulosamente experto en algo."* (review Mauricio). Misma corrección que en el CV (`cv-builder/references/quality-bar.md` §3).
+- **Regla:** usá **"expertise en {X}"** SOLO donde la persona realmente se destaca; para el resto, "experiencia en". *"Cuando sos experto es que sos meticulosamente experto en algo."* (review Mauricio). Misma corrección que en el CV (`armar-cv/references/quality-bar.md` §3).
 
 ---
 
@@ -123,7 +123,7 @@ Regla que resuelve una contradicción del material de Classroom (review Lucas):
 
 ## 9. Experience (por rol) — bullets verbo → tech → resultado
 
-**El método de bullets es el mismo que el CV** — leé `.claude/skills/cv-builder/references/quality-bar.md` §5 (Harvard: acción→resultado→relevancia) y §6 (protagonismo, no robot). Fue **la corrección más repetida en las 8 calls**. Lo esencial aplicado a LinkedIn:
+**El método de bullets es el mismo que el CV** — leé `.claude/skills/armar-cv/references/quality-bar.md` §5 (Harvard: acción→resultado→relevancia) y §6 (protagonismo, no robot). Fue **la corrección más repetida en las 8 calls**. Lo esencial aplicado a LinkedIn:
 
 - ✅ **Fórmula, siempre:** verbo activo en pasado (implementé, desarrollé, lideré, optimicé, automaticé) + **tecnología** + qué hiciste + **resultado medible**. Ejemplo canónico (reviews Fede, Miguel):
   - ❌ *"Trabajé en el backend de la app usando Python."*
@@ -168,7 +168,7 @@ Regla que resuelve una contradicción del material de Classroom (review Lucas):
 
 ## 11. Anti-slop — los tells de IA que Cami caza al instante
 
-Igual que en el CV (`cv-builder/references/quality-bar.md` §11), con foco LinkedIn:
+Igual que en el CV (`armar-cv/references/quality-bar.md` §11), con foco LinkedIn:
 
 - ❌ **"passionate about" / "apasionado por"** (§6) — la nº1.
 - ❌ **Slogans genéricos copy-pasteados a todo ingeniero**: *"comprensión de sistemas complejos, diseño de soluciones eficientes y construcción de software escalable y mantenible"* → *"le preguntaste a la IA y te copió lo que le manda a todos los ingenieros"* (review Mauricio). También *"desarrollo de alto impacto"*, *"soluciones escalables"*, *"me adapto rápido"*. Reemplazar por algo específico o borrar.

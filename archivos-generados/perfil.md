@@ -1,9 +1,7 @@
-# Profile
+# Perfil
 
-> Este archivo lo llena automáticamente la skill `coderhub-setup` la primera vez que la corrés.
-> Después, las demás skills lo leen para personalizar todo lo que hacen por vos.
->
-> **Si querés actualizar tu perfil** (cambio de stack, nuevo logro, ajuste de banda salarial, etc.) editá los campos directamente o re-corré `/coderhub-setup`.
+> Lo llena `configurar-coderhub` la primera vez. Después, todas las skills lo leen.
+> Para actualizarlo (nuevo logro, cambio de stack, banda salarial), editá los campos o re-corré `/configurar-coderhub`.
 
 ---
 
@@ -72,7 +70,7 @@
 
 ## Logros concretos (con números)
 
-> Esto es oro para LinkedIn / CV / entrevistas. Cada logro tiene que tener **un número, un porcentaje, o un resultado medible**.
+> Oro para LinkedIn / CV / entrevistas. Cada logro con un número, un porcentaje o un resultado medible.
 
 - (ej. "Reduje 70% los costos de generación de IA — de $10 a $2-3 USD por guía")
 - (ej. "Migré sistema legacy MS-DOS a Django — automaticé proceso manual de 3 días a 1 minuto")
@@ -99,14 +97,13 @@
 - **Tu empresa actual debe enterarse de la búsqueda:** (sí / no)
 - **Modo stealth requerido:** (sí / no)
 
-> Si **estás empleado y tu empresa NO debe saberlo**, modo stealth = ON.
-> Las skills van a evitar likes/comentarios públicos en posts de hiring, no van a activar "Open to Work" público, etc.
+> Empleado + la empresa no debe saberlo → stealth ON. Las skills evitan likes/comentarios en posts de hiring y no activan "Open to Work" público.
 
 ---
 
 ## Bloqueos diagnosticados (lo que CoderHub identificó en tu call)
 
-> Esto sale de la transcripción de tu call de discovery. Si no tenés transcripción, dejalo vacío y corré `/coderhub-setup` después de la llamada.
+> Sale de la transcripción de tu call de discovery. Sin transcripción, dejalo vacío y corré `/configurar-coderhub` después de la llamada.
 
 - (ej. "El bottleneck es no-técnico: pasa HR pero rebote pre-técnica")
 - (ej. "LinkedIn anonimizado te elimina de búsquedas de recruiters")
@@ -114,7 +111,7 @@
 
 ## Anti-distracciones (lo que NO hay que hacer)
 
-> Trampas mentales típicas que el equipo de CoderHub identificó. Las skills las van a respetar para mantener foco.
+> Trampas mentales típicas que el equipo identificó. Las skills las respetan para mantener foco.
 
 - (ej. "No desviarse a aprender inglés conversacional antes — el target $4-5K en mercado hispano no lo necesita")
 - (ej. "No aprender Next.js u otra tech nueva — el desafío es de posicionamiento")
@@ -130,4 +127,4 @@
 
 ---
 
-*Última actualización: (fecha — la actualiza coderhub-setup automáticamente)*
+*Última actualización: (fecha — la actualiza configurar-coderhub automáticamente)*

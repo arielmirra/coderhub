@@ -2,7 +2,7 @@
 
 ## ¿Cuándo aplica?
 
-Cualquier skill que toque LinkedIn, redes sociales, o emails verifica primero el campo **"Modo stealth requerido"** en `~/.coderhub/profile.md`.
+Cualquier skill que toque LinkedIn, redes sociales, o emails verifica primero el campo **"Modo stealth requerido"** en `archivos-generados/perfil.md`.
 
 ## Si stealth = ON
 
@@ -46,4 +46,4 @@ Antes de cualquier acción que toque visibilidad pública, la skill **lee `profi
 
 ## ¿Y si el cliente cambia de empleado a desempleado durante el programa?
 
-Edita `profile.md` (campo "Modo stealth requerido" → no) o re-corre `/coderhub-setup`. Las skills toman el cambio en la próxima invocación.
+Edita `profile.md` (campo "Modo stealth requerido" → no) o re-corre `/configurar-coderhub`. Las skills toman el cambio en la próxima invocación.

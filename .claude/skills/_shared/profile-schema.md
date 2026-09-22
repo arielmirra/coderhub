@@ -1,6 +1,6 @@
 # Profile schema — qué tiene que tener `profile.md`
 
-Esquema de los campos esperados en `~/.coderhub/profile.md`. Cualquier skill que lee el profile asume estos campos.
+Esquema de los campos esperados en `archivos-generados/perfil.md`. Cualquier skill que lee el profile asume estos campos.
 
 ## Bloques obligatorios
 
@@ -52,5 +52,5 @@ Markdown plano. Headers `##` para bloques, listas con `- ` (espacio después del
 Si una skill detecta que falta un bloque obligatorio, **debe**:
 
 1. Avisar al cliente qué falta.
-2. Ofrecerle re-correr `/coderhub-setup` para completar.
+2. Ofrecerle re-correr `/configurar-coderhub` para completar.
 3. NO continuar con la operación pidiendo datos uno por uno (eso rompe la UX).

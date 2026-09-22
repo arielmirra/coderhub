@@ -1,33 +1,33 @@
 ---
-name: github-readme-builder
-description: Genera (o rehace) el profile README de GitHub del cliente — el repo especial usuario/usuario que se muestra arriba del perfil, como landing page profesional. Lee perfil/profile.md + trae los proyectos y la actividad reales del GitHub del cliente (vía gh api) y arma un README que POSICIONA: hero con qué construís y para quién, value prop con números, stack curado, proyectos con outcome (la prueba), y contacto. Corta la decoración (typing SVG, visitor counters, snake, trophy, gifs de "Hi") y prioriza señal. Triggers on "mejorá mi README de GitHub", "armá mi profile README", "hacé mi README de perfil", "/github-readme-builder", "optimizá mi GitHub", "readme de github", "perfil de github". Coherente con el CV y el LinkedIn (misma historia). NO es para READMEs de proyectos/repos (eso es otra cosa) — es específicamente para el perfil.
+name: armar-readme-github
+description: Genera (o rehace) el profile README de GitHub del cliente — el repo especial usuario/usuario que se muestra arriba del perfil, como landing page profesional. Lee archivos-generados/perfil.md + trae los proyectos y la actividad reales del GitHub del cliente (vía gh api) y arma un README que POSICIONA: hero con qué construís y para quién, value prop con números, stack curado, proyectos con outcome (la prueba), y contacto. Corta la decoración (typing SVG, visitor counters, snake, trophy, gifs de "Hi") y prioriza señal. Triggers on "mejorá mi README de GitHub", "armá mi profile README", "hacé mi README de perfil", "/armar-readme-github", "optimizá mi GitHub", "readme de github", "perfil de github". Coherente con el CV y el LinkedIn (misma historia). NO es para READMEs de proyectos/repos (eso es otra cosa) — es específicamente para el perfil.
 ---
 
 # GitHub Profile README Builder
 
-Arma el **profile README** del cliente (el repo especial `usuario/usuario`) como **landing page profesional**: posicionamiento arriba, proyectos reales como prueba, cero decoración. Tono: seguí `voz.md`.
+Arma el **profile README** del cliente (el repo especial `usuario/usuario`) como **landing page profesional**: posicionamiento arriba, proyectos reales como prueba, cero decoración. Tono: seguí la sección Voz de `AGENTS.md`.
 
 ## Pre-requisitos
 
-- `perfil/profile.md` lleno (corrió `coderhub-setup`). Si está sin llenar → *"No encuentro tu perfil cargado. Corré primero `coderhub-setup`."* y parar.
+- `archivos-generados/perfil.md` lleno (corrió `configurar-coderhub`). Si está sin llenar → *"No encuentro tu perfil cargado. Corré primero `configurar-coderhub`."* y parar.
 - **Usuario de GitHub** del cliente (está en el profile; si no, preguntarlo). Con `gh` disponible o la API pública se traen los proyectos reales.
 
 ## Outcome
 
-- Un `README.md` de perfil listo para pegar en el repo `usuario/usuario`, guardado en `trabajo/github/{YYYY-MM-DD}_readme-perfil.md`.
+- Un `README.md` de perfil listo para pegar en el repo `usuario/usuario`, guardado en `archivos-generados/github/{YYYY-MM-DD}_readme-perfil.md`.
 - Sigue el método CoderHub: hero de posicionamiento, value prop con números, stack curado (4-6), **proyectos con outcome** (la estrella), connect compacto, personalidad opcional en `<details>`.
 - Instrucciones para deployarlo (crear/pushear el repo especial).
 - Coherente con el CV y el LinkedIn del cliente.
 
 ## Skill Relationships
 
-- **Upstream:** `coderhub-setup` — genera el `perfil/profile.md` que esta skill consume.
-- **Sibling:** `cv-builder` y `linkedin-profile-optimizer` — el README, el CV y el LinkedIn cuentan la **misma historia** (mismo rol target, mismos logros con números, mismo stack priorizado).
+- **Upstream:** `configurar-coderhub` — genera el `archivos-generados/perfil.md` que esta skill consume.
+- **Sibling:** `armar-cv` y `optimizar-linkedin` — el README, el CV y el LinkedIn cuentan la **misma historia** (mismo rol target, mismos logros con números, mismo stack priorizado).
 
 ## Step 1 — Leer el profile + la quality bar
 
-1. Leer `perfil/profile.md`. Extraer: identidad (nombre, usuario de GitHub, links), rol + años, stack (principal + AI si usa), logros con números, objetivo de búsqueda (rol target), diferenciadores.
-2. **Leer `.claude/skills/github-readme-builder/references/quality-bar.md` antes de generar** — es el "qué sí / qué no / por qué" (profile vs project README, el hero de posicionamiento, proyectos como prueba, señal vs decoración, anti-patterns). Es el nivel a igualar.
+1. Leer `archivos-generados/perfil.md`. Extraer: identidad (nombre, usuario de GitHub, links), rol + años, stack (principal + AI si usa), logros con números, objetivo de búsqueda (rol target), diferenciadores.
+2. **Leer `.claude/skills/armar-readme-github/references/quality-bar.md` antes de generar** — es el "qué sí / qué no / por qué" (profile vs project README, el hero de posicionamiento, proyectos como prueba, señal vs decoración, anti-patterns). Es el nivel a igualar.
 3. Si falta el usuario de GitHub, preguntarlo.
 
 ## Step 2 — Traer los proyectos y la actividad reales
@@ -68,7 +68,7 @@ Antes de entregar, pasá el texto por el filtro anti-slop (quality-bar §8, igua
 
 ## Step 6 — Guardar + instrucciones de deploy
 
-1. Guardar en `trabajo/github/{YYYY-MM-DD}_readme-perfil.md` (crear `trabajo/github/` si no existe). Mostrar la ruta.
+1. Guardar en `archivos-generados/github/{YYYY-MM-DD}_readme-perfil.md` (crear `archivos-generados/github/` si no existe). Mostrar la ruta.
 2. Dar las instrucciones de deploy:
    ```
    Para que se muestre en tu perfil, el archivo va en un repo especial con TU MISMO nombre de usuario:

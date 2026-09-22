@@ -1,15 +1,15 @@
 ---
-name: coderhub-setup
-description: Onboarding inicial del cliente CoderHub. Llena perfil/profile.md automáticamente extrayendo datos de la transcripción de la call de discovery con el equipo de CoderHub, del CV del cliente, o de su perfil de LinkedIn. Es la primera skill que cualquier cliente nuevo tiene que correr — el resto de las skills (linkedin-profile-optimizer, linkedin-feed-job-hunter, cv-builder, etc.) leen el profile que esta skill genera. Triggers on "/coderhub-setup", "configurar mi perfil", "setup inicial", "arrancar con CoderHub", "primera vez que uso esto". Usa solo herramientas de read y write — no manda emails, no toca LinkedIn, no posta nada. La salida es un único archivo: perfil/profile.md actualizado con todos los datos del cliente.
+name: configurar-coderhub
+description: Onboarding inicial del cliente CoderHub. Llena archivos-generados/perfil.md automáticamente extrayendo datos de la transcripción de la call de discovery con el equipo de CoderHub, del CV del cliente, o de su perfil de LinkedIn. Es la primera skill que cualquier cliente nuevo tiene que correr — el resto de las skills (optimizar-linkedin, linkedin-feed-job-hunter, armar-cv, etc.) leen el profile que esta skill genera. Triggers on "/configurar-coderhub", "configurar mi perfil", "setup inicial", "arrancar con CoderHub", "primera vez que uso esto". Usa solo herramientas de read y write — no manda emails, no toca LinkedIn, no posta nada. La salida es un único archivo: archivos-generados/perfil.md actualizado con todos los datos del cliente.
 ---
 
 # CoderHub Setup
 
-Primera skill que corre el alumno al abrir su repo de CoderHub. Llena `perfil/profile.md` con sus datos para que las otras skills (LinkedIn optimizer, feed apply, cv-builder, etc.) sepan quién es.
+Primera skill que corre el alumno al abrir su repo de CoderHub. Llena `archivos-generados/perfil.md` con sus datos para que las otras skills (LinkedIn optimizer, feed apply, armar-cv, etc.) sepan quién es.
 
 ## Outcome
 
-- `perfil/profile.md` lleno con todos los campos del schema (`.claude/skills/_shared/profile-schema.md`)
+- `archivos-generados/perfil.md` lleno con todos los campos del schema (`.claude/skills/_shared/profile-schema.md`)
 - El cliente confirma cada bloque antes de guardar
 - Una sola corrida resuelve todo el onboarding (sin micro-preguntas dispersas en el tiempo)
 
@@ -17,13 +17,13 @@ Primera skill que corre el alumno al abrir su repo de CoderHub. Llena `perfil/pr
 
 ## Step 0 — Ver el estado del perfil
 
-El perfil vive en `perfil/profile.md`, **a la vista dentro del repo** (mismo lugar donde el alumno trabaja). Los outputs (CV generado, drafts de LinkedIn, prep de entrevistas) van en `trabajo/`.
+El perfil vive en `archivos-generados/perfil.md`, **a la vista dentro del repo** (mismo lugar donde el alumno trabaja). Los outputs (CV generado, drafts de LinkedIn, prep de entrevistas) van en `archivos-generados/`.
 
-1. Leé `perfil/profile.md`.
+1. Leé `archivos-generados/perfil.md`.
 2. **Si está sin llenar** (los campos están vacíos / con los ejemplos entre paréntesis, o tiene el marcador de placeholder) → es la primera vez. Seguí a Step 1.
 3. **Si ya tiene datos cargados** → avisá al alumno que ya tiene perfil y preguntá si quiere **actualizarlo** (mergear info nueva) o **empezar de cero**.
 
-> No hace falta crear directorios ni copiar plantillas: `perfil/profile.md` ya viene en el repo. Todo lo del alumno vive en su repo (privado).
+> No hace falta crear directorios ni copiar plantillas: `archivos-generados/perfil.md` ya viene en el repo. Todo lo del alumno vive en su repo (privado).
 
 ---
 
@@ -150,7 +150,7 @@ Hacer preguntas en bloques temáticos (no una por una):
 
 ## Step 3 — Construir el profile
 
-Generar `perfil/profile.md` siguiendo el schema en `.claude/skills/_shared/profile-schema.md`. Reglas:
+Generar `archivos-generados/perfil.md` siguiendo el schema en `.claude/skills/_shared/profile-schema.md`. Reglas:
 
 1. **Normalizar formatos:**
    - WhatsApp: `+{código país}{código área}{número}` todo junto, sin espacios ni guiones (ej. `+5491153190688`).
@@ -193,22 +193,22 @@ Listo, armé tu perfil con los datos que me pasaste. Te lo paso bloque por bloqu
 Al final, mostrar la lista de campos que quedaron en `(pendiente)` y avisar:
 
 ```
-✅ Tu perfil está guardado en `perfil/profile.md`.
+✅ Tu perfil está guardado en `archivos-generados/perfil.md`.
 
 ⚠️ Estos campos quedaron sin completar:
 - Banda salarial stretch (no apareció en la transcripción)
 - Certificaciones (no había en CV)
 
-Si querés completarlos, editá `perfil/profile.md` directo o tirame `/coderhub-setup` de nuevo cuando los tengas.
+Si querés completarlos, editá `archivos-generados/perfil.md` directo o tirame `/configurar-coderhub` de nuevo cuando los tengas.
 
-Próximo paso: usá `linkedin-profile-optimizer` para optimizar tu perfil de LinkedIn con estos datos.
+Próximo paso: usá `optimizar-linkedin` para optimizar tu perfil de LinkedIn con estos datos.
 ```
 
 ---
 
 ## Step 5 — Guardar
 
-Escribir el resultado en `perfil/profile.md`. Agregar al final del archivo:
+Escribir el resultado en `archivos-generados/perfil.md`. Agregar al final del archivo:
 
 ```markdown
 *Última actualización: {YYYY-MM-DD}*
@@ -218,26 +218,26 @@ Escribir el resultado en `perfil/profile.md`. Agregar al final del archivo:
 
 ## Reglas
 
-1. **Single source of truth.** El `perfil/profile.md` es el ÚNICO lugar donde viven los datos del cliente. Las demás skills lo leen, no lo modifican.
+1. **Single source of truth.** El `archivos-generados/perfil.md` es el ÚNICO lugar donde viven los datos del cliente. Las demás skills lo leen, no lo modifican.
 2. **Confirmación bloque por bloque.** Nunca guardar sin que el cliente apruebe lo extraído.
 3. **No inventar.** Si falta info, dejarla en `(pendiente)`. Mejor un perfil incompleto y honesto que uno completo y con errores.
 4. **No mandar nada.** Esta skill SOLO lee y escribe en disco local (el repo del alumno). No toca LinkedIn, email, ni redes.
 5. **Fuentes oficiales primero.** Si hay LinkedIn URL accesible, usar eso antes que asumir desde CV (LinkedIn refleja el estado actual; CV puede estar desactualizado).
-6. **Tono Ariel en las preguntas.** Voseo argentino, directo, sin formalismos. "Tirame en un mensaje..." mejor que "Por favor proporcione...". Ver `voz.md`.
-7. **Perfil orientado a conseguir trabajo tech.** El `perfil/profile.md` es la identidad profesional del alumno para su búsqueda laboral como ingeniero/dev. NO incluir lo que no suma a un rol técnico — emprendimientos propios, podcasts, creación de contenido, coaching, hobbies — aunque aparezca en el LinkedIn o el CV. El foco es 100% "conseguir el próximo trabajo de ingeniería". Ante la duda, dejar afuera lo que no aporta al perfil técnico. (Un blog técnico o proyectos open-source SÍ suman; un podcast de productividad no.)
+6. **Tono Ariel en las preguntas.** Voseo argentino, directo, sin formalismos. "Tirame en un mensaje..." mejor que "Por favor proporcione...". Ver la sección Voz de `AGENTS.md`.
+7. **Perfil orientado a conseguir trabajo tech.** El `archivos-generados/perfil.md` es la identidad profesional del alumno para su búsqueda laboral como ingeniero/dev. NO incluir lo que no suma a un rol técnico — emprendimientos propios, podcasts, creación de contenido, coaching, hobbies — aunque aparezca en el LinkedIn o el CV. El foco es 100% "conseguir el próximo trabajo de ingeniería". Ante la duda, dejar afuera lo que no aporta al perfil técnico. (Un blog técnico o proyectos open-source SÍ suman; un podcast de productividad no.)
 8. **GitHub estratégico según seniority.** Para **Senior/Lead**, de GitHub se destaca **longevidad** (años programando demostrables desde el año de la cuenta), **actividad constante** y a lo sumo **1-2 proyectos realmente notables** — NUNCA un dump de repos ni sandboxes de aprendizaje (señaliza junior y alarga el CV al pedo). Para junior/semi, un proyecto propio bien hecho sí puede sumar. Default: longevidad + constancia, no catálogo.
 
 ---
 
 ## Outputs adicionales (opcional)
 
-Si después de generar el `perfil/profile.md` el cliente quiere ver qué skills puede correr ahora, decirle:
+Si después de generar el `archivos-generados/perfil.md` el cliente quiere ver qué skills puede correr ahora, decirle:
 
 ```
 Skills disponibles ahora que tu perfil está configurado:
 
-1. `cv-builder` — armar/rehacer tu CV con el método CoderHub
-2. `linkedin-profile-optimizer` — optimizar tu LinkedIn para aparecer en búsquedas de recruiters
+1. `armar-cv` — armar/rehacer tu CV con el método CoderHub
+2. `optimizar-linkedin` — optimizar tu LinkedIn para aparecer en búsquedas de recruiters
 
 Tirame el nombre o pedime "optimizá mi LinkedIn" / "armá mi CV" en lenguaje natural.
 ```

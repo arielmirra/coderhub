@@ -1,16 +1,16 @@
 ---
-name: linkedin-profile-optimizer
-description: Optimiza el perfil de LinkedIn del cliente para maximizar visibilidad en búsquedas de recruiters (LinkedIn Recruiter). Lee perfil/profile.md (creado por coderhub-setup) y propone cambios concretos en cada sección — Headline, About, Experience, Skills, Featured, Projects, Education, URL, settings de visibilidad. Genera 3 variantes de Headline (keyword-heavy / narrativo / máximo SEO) y deja al cliente elegir. Respeta modo stealth si está activado. NO toca LinkedIn directamente — devuelve los textos para que el cliente los pegue, sección por sección, con confirmación. Triggers on "optimizá mi LinkedIn", "mejorar perfil LinkedIn", "/linkedin-profile-optimizer", "linkedin SEO", "aparecer en búsquedas de recruiters", "headline LinkedIn".
+name: optimizar-linkedin
+description: Optimiza el perfil de LinkedIn del cliente para maximizar visibilidad en búsquedas de recruiters (LinkedIn Recruiter). Lee archivos-generados/perfil.md (creado por configurar-coderhub) y propone cambios concretos en cada sección — Headline, About, Experience, Skills, Featured, Projects, Education, URL, settings de visibilidad. Genera 3 variantes de Headline (keyword-heavy / narrativo / máximo SEO) y deja al cliente elegir. Respeta modo stealth si está activado. NO toca LinkedIn directamente — devuelve los textos para que el cliente los pegue, sección por sección, con confirmación. Triggers on "optimizá mi LinkedIn", "mejorar perfil LinkedIn", "/optimizar-linkedin", "linkedin SEO", "aparecer en búsquedas de recruiters", "headline LinkedIn".
 ---
 
 # LinkedIn Profile Optimizer
 
-Optimiza el perfil de LinkedIn del cliente para que aparezca en las búsquedas que hacen los recruiters en LinkedIn Recruiter. Tono: seguí `voz.md`.
+Optimiza el perfil de LinkedIn del cliente para que aparezca en las búsquedas que hacen los recruiters en LinkedIn Recruiter. Tono: seguí la sección Voz de `AGENTS.md`.
 
 ## Pre-requisitos
 
-- `perfil/profile.md` lleno (corrió `coderhub-setup` antes).
-- Si está sin llenar, esta skill **no avanza** — devuelve: *"No encuentro tu perfil cargado. Corré primero `coderhub-setup`."*
+- `archivos-generados/perfil.md` lleno (corrió `configurar-coderhub` antes).
+- Si está sin llenar, esta skill **no avanza** — devuelve: *"No encuentro tu perfil cargado. Corré primero `configurar-coderhub`."*
 
 ## Outcome
 
@@ -27,13 +27,13 @@ Optimiza el perfil de LinkedIn del cliente para que aparezca en las búsquedas q
   9. Settings de visibilidad y "Open to Work" (configurado según modo stealth)
 - Estrategia de keywords explicada (qué keywords priorizar, por qué, cómo distribuirlas).
 - **Si modo stealth = ON** → toda la estrategia es "discreto pero visible para LinkedIn Recruiter".
-- El documento final se guarda en `trabajo/linkedin/` (ver Step 7).
+- El documento final se guarda en `archivos-generados/linkedin/` (ver Step 7).
 
 ---
 
 ## Step 1 — Leer el profile y validar
 
-1. Leer `perfil/profile.md`.
+1. Leer `archivos-generados/perfil.md`.
 2. Verificar que tenga estos bloques mínimos:
    - Identidad (nombre, LinkedIn URL)
    - Stack técnico (principal + secundario)
@@ -41,7 +41,7 @@ Optimiza el perfil de LinkedIn del cliente para que aparezca en las búsquedas q
    - Logros con números
    - Objetivo de búsqueda
    - Modo confidencialidad
-3. Si falta algo, listar al cliente qué falta y derivar a `coderhub-setup`.
+3. Si falta algo, listar al cliente qué falta y derivar a `configurar-coderhub`.
 
 ## Step 2 — Detectar modo stealth
 
@@ -52,9 +52,9 @@ Leer `.claude/skills/_shared/stealth-mode.md` y aplicar reglas según el campo d
 
 ## Step 3 — Construir las secciones
 
-**Leer `.claude/skills/linkedin-profile-optimizer/references/quality-bar.md` antes de generar** — es la fuente de verdad del método CoderHub para un buen perfil (el "qué sí / qué no / por qué" de cada sección, con el feedback real de Cami). Es el nivel a igualar — no se copian datos, se copia el nivel y las reglas.
+**Leer `.claude/skills/optimizar-linkedin/references/quality-bar.md` antes de generar** — es la fuente de verdad del método CoderHub para un buen perfil (el "qué sí / qué no / por qué" de cada sección, con el feedback real de Cami). Es el nivel a igualar — no se copian datos, se copia el nivel y las reglas.
 
-Usar las plantillas en `.claude/skills/linkedin-profile-optimizer/references/section-templates.md`. Cada sección sale parametrizada con los datos del profile, no inventada.
+Usar las plantillas en `.claude/skills/optimizar-linkedin/references/section-templates.md`. Cada sección sale parametrizada con los datos del profile, no inventada.
 
 ### 3.0 Capa visual e identidad (foto · banner · nombre visible)
 
@@ -68,7 +68,7 @@ Presentar como checklist accionable ("esta semana: cambiá foto, banner y nombre
 
 ### 3.1 Headline (3 variantes)
 
-Generar 3 opciones siguiendo `.claude/skills/linkedin-profile-optimizer/references/section-templates.md`:
+Generar 3 opciones siguiendo `.claude/skills/optimizar-linkedin/references/section-templates.md`:
 
 - **A — Keyword-heavy:** roles + tecnologías separadas por `·` + diferenciador + 🌍 si es remoto. Máximo SEO.
 - **B — Narrativo:** rol + stack agrupado + "Building/Specialized in..." + Open to Remote.
@@ -162,13 +162,13 @@ Configurar Open to Work con: títulos (rol target + variantes), tipos (Full-time
 
 ## Step 4 — Estrategia de keywords (la teoría)
 
-Después de mostrar los textos, explicar cómo funciona LinkedIn Recruiter (peso por campo). Ver `.claude/skills/linkedin-profile-optimizer/references/linkedin-seo-strategy.md` para la tabla completa.
+Después de mostrar los textos, explicar cómo funciona LinkedIn Recruiter (peso por campo). Ver `.claude/skills/optimizar-linkedin/references/linkedin-seo-strategy.md` para la tabla completa.
 
 Mostrar al final cuáles son las 10-15 keywords prioritarias para su rol target y en qué campos deberían aparecer.
 
 ## Step 5 — Engagement strategy (consciente del modo stealth)
 
-Recomendar acciones diarias/semanales para amplificar visibilidad orgánica. Las acciones cambian según stealth. Ver `.claude/skills/linkedin-profile-optimizer/references/engagement-strategy.md`.
+Recomendar acciones diarias/semanales para amplificar visibilidad orgánica. Las acciones cambian según stealth. Ver `.claude/skills/optimizar-linkedin/references/engagement-strategy.md`.
 
 ## Step 6 — Output final
 
@@ -183,12 +183,12 @@ Entregar un documento estructurado con:
 
 ## Step 7 — Guardar
 
-Guardar el documento final en `trabajo/linkedin/{YYYY-MM-DD}_linkedin-optimizado.md` (crear `trabajo/linkedin/` si no existe). Mostrar la ruta al cliente para que lo tenga a mano mientras pega sección por sección.
+Guardar el documento final en `archivos-generados/linkedin/{YYYY-MM-DD}_linkedin-optimizado.md` (crear `archivos-generados/linkedin/` si no existe). Mostrar la ruta al cliente para que lo tenga a mano mientras pega sección por sección.
 
 ## Reglas
 
 1. **Modo stealth es no-negociable.** Si está ON, NUNCA recomendar acciones públicas que delaten búsqueda.
 2. **Confirmar antes de cada sección.** El cliente aprueba o ajusta cada bloque antes de pasar al siguiente.
 3. **Nunca tocar LinkedIn directo.** La skill devuelve textos. El cliente los pega. Es deliberado: que revise una vez más y se sienta dueño del cambio.
-4. **No inventar logros.** Solo usar los que están en `perfil/profile.md`. Si necesitamos más, derivar a `coderhub-setup` para sumarlos al profile.
+4. **No inventar logros.** Solo usar los que están en `archivos-generados/perfil.md`. Si necesitamos más, derivar a `configurar-coderhub` para sumarlos al profile.
 5. **Idioma:** la copy va en español o inglés según el target. US/Global → **inglés**; LATAM hispano puro → **español**; ambos → **bilingüe** (inglés primero, español como segunda parte del About).

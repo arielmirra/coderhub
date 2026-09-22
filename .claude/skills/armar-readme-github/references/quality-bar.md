@@ -2,7 +2,7 @@
 
 Fuente de verdad del contenido de un **profile README** (el repo especial `usuario/usuario` que se muestra arriba de tu perfil de GitHub). Destilado de: (1) perfiles reales que posicionan bien — **BraianTroncoso**, **natemoo-re**, **simonw**, **terrytangyuan**, **rednafi**; (2) el canon de craft de [awesome-readme](https://github.com/matiassingers/awesome-readme); (3) [awesome-github-profile-readme](https://github.com/abhisheknaiidu/awesome-github-profile-readme) (arquetipos + tools); (4) artículos: Martin Heinz ("README as landing page"), Simon Willison ("self-updating README"), Jessica Lim ("diferenciarte, no acumular widgets"). No copiar datos — copiar el **nivel, la estructura y las reglas**.
 
-> **Coherencia con el resto:** el README, el CV y el LinkedIn cuentan la **misma historia** — mismo rol target, mismo posicionamiento, mismos logros con números. Ver `cv-builder/references/quality-bar.md` y `linkedin-profile-optimizer/references/quality-bar.md`.
+> **Coherencia con el resto:** el README, el CV y el LinkedIn cuentan la **misma historia** — mismo rol target, mismo posicionamiento, mismos logros con números. Ver `armar-cv/references/quality-bar.md` y `optimizar-linkedin/references/quality-bar.md`.
 
 ---
 
@@ -57,7 +57,7 @@ Acá es donde ganás o perdés. Es el equivalente a los bullets con métricas de
 - ✅ **Tag de estado** (`open source · MIT` / `private`) para dar contexto.
 - ✅ El reframe **"Not a X. A Y."** (Braian: *"Not a chatbot. A second mind."*) es memorable — **opcional**, y si se usa en todos suena gimmick; usalo en los 2-3 que de verdad lo merecen.
 - ✅ **Traé los proyectos del GitHub real** de la persona (vía `gh api`), no inventes. Priorizá: los que tienen estrellas, un producto real/deployado, o son relevantes al rol target. Un proyecto de **AI/agentes** hoy es diferencial fuerte.
-- ❌ **NO** listar sandboxes de aprendizaje, tutoriales seguidos, o repos triviales — restan (señalizan junior), igual que en el CV (coderhub-setup regla 8).
+- ❌ **NO** listar sandboxes de aprendizaje, tutoriales seguidos, o repos triviales — restan (señalizan junior), igual que en el CV (configurar-coderhub regla 8).
 
 Si la persona **no tiene proyectos públicos fuertes**, el README se apoya más en el value prop + experiencia + un feed de blog/actividad. No forzar una sección de proyectos flojos.
 
